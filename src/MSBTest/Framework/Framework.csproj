@@ -39,11 +39,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include=".testFramework\.extensions\IntellisenseHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".build\build.configuration.targets" />
     <None Include=".build\build.targets" />
+    <None Include=".testFramework\.extensions\imports.targets" />
+    <None Include=".testFramework\.extensions\Tasks\FileAssert.targets" />
+    <None Include=".testFramework\.extensions\Tasks\HelloWorld.targets" />
+    <None Include=".testFramework\.references\import.Test.targets" />
+    <None Include=".testFramework\.references\import.Trace.targets" />
+    <None Include=".testFramework\imports.targets" />
+    <None Include=".testFramework\testrunner.props" />
+    <None Include=".testFramework\testrunner.targets" />
   </ItemGroup>
   <Import Project="$(MSBuildProjectDirectory)\.build\build.configuration.targets" />
   <!--<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />-->
