@@ -17,6 +17,10 @@
 
 
   <Target Name="CopyFrameworkFilesToNugetPackageStructure">
+    <!--<Exec Command="md $(MSBuildProjectDirectory)\tools" />
+    <Exec Command="md $(MSBuildProjectDirectory)\lib" />
+    <Exec Command="md $(MSBuildProjectDirectory)\content" />
+    <Exec Command="md $(MSBuildProjectDirectory)\build" />-->
     
     <ItemGroup>
       <testFrameworkFiles Include="$(MSBuildProjectDirectory)\..\Framework\testFramework\**\*.*" Exclude="*.cs"/>
