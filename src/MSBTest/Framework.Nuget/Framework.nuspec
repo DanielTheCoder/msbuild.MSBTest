@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>MSBuild.MSBTest</id>
+    <version>0.0.0.1-pre</version>
+    <title>MSBuild Test Framework</title>
+    <authors>Daniel Sack</authors>
+    <owners>Daniel Sack</owners>
+    <!--<licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
+    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
+    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Simple Test Framework for MSBuild Scripts</description>
+    <releaseNotes>Initial version</releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <tags>MSBuild Test MSBTest</tags>
+  </metadata>
+  <files>
+    <!--<file src="**\*.*" target="tools" />-->
+    <file src=".build\*.*" target="build" />
+    <file src=".testFramework\**\*.*" target="tools" exclude="**\*.log" />
+    <file src="Framework.nuspec" target="tools\Framework.nuspec" />
+  </files>
+  
+</package>
