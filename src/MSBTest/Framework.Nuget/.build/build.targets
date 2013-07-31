@@ -2,30 +2,35 @@
 
   <Target Name="Build">
     <CallTarget Targets="CleanNugetFolderStructure;CopyFrameworkFilesToNugetPackageStructure" />
+    <Exec Command="nuget pack Framework.nuspec" />
   </Target>
+  
   <Target Name="Clean">
     <CallTarget Targets="CleanNugetFolderStructure" />
   </Target>
+  
   <Target Name="Rebuild" />
-  
-  
   <Target Name="Publish"/>
   <Target Name="GetNativeManifest" />
   <Target Name="GetCopyToOutputDirectoryItems" />
-
-  
   <Target Name="AfterBuild" AfterTargets="Build" />
 
 
   <Target Name="CopyFrameworkFilesToNugetPackageStructure">
-    <CreateItem Include="$(MSBuildProjectDirectory)\..\Framework\testFramework\**\*.*" Exclude="*.cs">
-      <Output TaskParameter="Include" ItemName="testFrameworkFiles"/>
-    </CreateItem>
+    
+    <ItemGroup>
+      <testFrameworkFiles Include="$(MSBuildProjectDirectory)\..\Framework\testFramework\**\*.*" Exclude="*.cs"/>
+      <projectFiles       Include="$(MSBuildProjectDirectory)\..\Framework\build\**\*.*" />
+    </ItemGroup>
+    
     <Copy SourceFiles="@(testFrameworkFiles)" 
           DestinationFolder="$(MSBuildProjectDirectory)\tools\testFramework\%(testFrameworkFiles.RecursiveDir)" 
-          OverwriteReadOnlyFiles="true"
-          ContinueOnError="true"/>
-  
+          OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
+
+    <Copy SourceFiles="@(projectFiles)"
+          DestinationFolder="$(MSBuildProjectDirectory)\build\%(projectFiles.RecursiveDir)"
+          OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
+    
   </Target>
 
   <Target Name="CleanNugetFolderStructure">
@@ -38,6 +43,7 @@
     </ItemGroup>
     
     <Message Text="@(files)" />
+    <Message Text="@(folders)" />
     
     <Delete Files="@(files)" />
     <RemoveDir Directories="@(folders)" ContinueOnError="true" />

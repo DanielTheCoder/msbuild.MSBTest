@@ -19,6 +19,7 @@
     <None Include="Framework.nuspec" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="build\" />
     <Folder Include="content\" />
     <Folder Include="lib\" />
     <Folder Include="tools\" />

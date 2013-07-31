@@ -45,6 +45,8 @@
   <ItemGroup>
     <None Include=".build\build.configuration.targets" />
     <None Include=".build\build.targets" />
+    <None Include="build\Build.Configuration.targets" />
+    <None Include="build\build.targets" />
     <None Include="testFramework\references\import.Tasks.targets" />
     <None Include="testFramework\tasks\FileAssert.targets" />
     <None Include="testFramework\tasks\HelloWorld.targets" />

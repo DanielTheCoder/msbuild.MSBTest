@@ -1,27 +1,13 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0"  >
 
-  <Import Project="$(MSBuildProjectDirectory)\testFramework\testrunner.targets" />
+  <Import Project="$(MSBuildProjectDirectory)\build\build.targets" />
 
-  <Target Name="Build">
-    <CallTarget Targets="RunTests" />
-  </Target>
-
-  <Target Name="Clean" >
-    <CallTarget Targets="CleanTests" />
-  </Target>
-  
-  <Target Name="Rebuild" >
-    <CallTarget Targets="Clean; Build" />
-  </Target>
-  
-  <Target Name="Publish">
-    <CallTarget Targets="Build" />
-  </Target>
-
+  <Target Name="Build"/>
+  <Target Name="Clean" />
+  <Target Name="Rebuild" />
+  <Target Name="Publish"/>
   <Target Name="GetNativeManifest" />
   <Target Name="GetCopyToOutputDirectoryItems" />
-
-  
   <Target Name="AfterBuild" AfterTargets="Build" />
 
 </Project>

@@ -15,11 +15,12 @@
     <copyright>Copyright 2013</copyright>
     <tags>MSBuild Test MSBTest</tags>
   </metadata>
+  
   <files>
-    <!--<file src="**\*.*" target="tools" />-->
-    <file src=".build\*.*" target="build" />
-    <file src=".testFramework\**\*.*" target="tools" exclude="**\*.log" />
-    <file src="Framework.nuspec" target="tools\Framework.nuspec" />
+    <file src="tools\**\*.*" target="tools" exclude="**\*.log" />
+    <file src="build\**\*.*" target="build" exclude="**\*.log" />
+    <file src="content\*.*" target="content" exclude="**\*.log" />
+    <file src="lib\**\*.*" target="lib" exclude="**\*.log" />
   </files>
   
 </package>
