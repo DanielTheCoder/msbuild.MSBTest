@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0"  >
 
   <PropertyGroup>
-    <_ExtensionsRoot>$(MSBuildThisFileDirectory)\Tasks\</_ExtensionsRoot>
+    <_ExtensionsRoot>$(TestFrameworkRoot)\tasks\</_ExtensionsRoot>
   </PropertyGroup>
   
   <!-- Sample -->

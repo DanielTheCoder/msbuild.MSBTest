@@ -3,5 +3,6 @@
   <!-- test runtime targets -->
   <Import Project="$(TestFrameworkReferencesRoot)import.Trace.targets" />
   <Import Project="$(TestFrameworkReferencesRoot)import.Test.targets" />
+  <Import Project="$(TestFrameworkReferencesRoot)import.Tasks.targets" />
   
 </Project>
