@@ -17,12 +17,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Framework.nuspec" />
+    <None Include="tools\Install.ps1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="build\" />
     <Folder Include="content\" />
     <Folder Include="lib\" />
-    <Folder Include="tools\" />
   </ItemGroup>
   <Import Project="$(MSBuildProjectDirectory)\.build\build.configuration.targets" />
   <Import Project="$(MSBuildProjectDirectory)\.build\build.targets" />

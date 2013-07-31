@@ -28,7 +28,7 @@
           OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
 
     <Copy SourceFiles="@(projectFiles)"
-          DestinationFolder="$(MSBuildProjectDirectory)\build\%(projectFiles.RecursiveDir)"
+          DestinationFolder="$(MSBuildProjectDirectory)\tools\%(projectFiles.RecursiveDir)"
           OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
     
   </Target>
@@ -39,6 +39,7 @@
       <files Include="$(MSBuildProjectDirectory)\tools\**\*.*"/>
       <files Include="$(MSBuildProjectDirectory)\lib\**\*.*"/>
       <files Include="$(MSBuildProjectDirectory)\content\**\*.*"/>
+      <files Include="$(MSBuildProjectDirectory)\build\**\*.*"/>
       <folders Include="%(files.RelativeDir)" />
     </ItemGroup>
     
