@@ -155,3 +155,4 @@ $RECYCLE.BIN/
 src/MSBTest/Framework.Nuget/tools/*
 src/**/*.nupkg
 src/*.nupkg
+src/MSBTest/Framework.Nuget/*.nupkg
