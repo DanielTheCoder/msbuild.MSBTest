@@ -19,7 +19,9 @@
   <ItemGroup>
     <None Include=".build\Build.Configuration.targets" />
     <None Include=".build\build.targets" />
+    <None Include="extensions\imports.targets" />
     <None Include="packages.config" />
+    <None Include="src\imports.targets" />
     <None Include="tests\sample-suite\sample.test.targets" />
     <None Include="tests\test.import" />
   </ItemGroup>
