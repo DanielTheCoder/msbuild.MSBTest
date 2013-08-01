@@ -2,9 +2,9 @@
 
   <PropertyGroup Condition="'$(TestrunnerImport)'==''">
     <!-- Import for Debug -->
-    <TestrunnerImport Condition="'$(TestrunnerImport)'==''">$(MSBuildProjectDirectory)\..\testFramework\testrunner.targets</TestrunnerImport>
+    <!--<TestrunnerImport Condition="!Exists('$(TestrunnerImport)')">$(MSBuildProjectDirectory)..\testFramework\testrunner.targets</TestrunnerImport>-->
     <!-- Import for nuget -->
-    <TestrunnerImport Condition="'$(TestrunnerImport)'==''">$(MSBuildThisFileDirectory)\testFramework\testrunner.targets</TestrunnerImport>
+    <TestrunnerImport Condition="!Exists('$(TestrunnerImport)')">$(MSBuildThisFileDirectory)..\testFramework\testrunner.targets</TestrunnerImport>
   </PropertyGroup>
   <Import Project="$(MSBuildProjectDirectory)\testFramework\testrunner.targets" />
 

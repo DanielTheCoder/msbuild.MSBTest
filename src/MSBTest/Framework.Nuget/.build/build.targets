@@ -51,7 +51,7 @@
           OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
 
     <Copy SourceFiles="@(projectFiles)"
-          DestinationFolder="$(MSBuildProjectDirectory)\tools\%(projectFiles.RecursiveDir)"
+          DestinationFolder="$(MSBuildProjectDirectory)\tools\build\%(projectFiles.RecursiveDir)"
           OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
 
   </Target>
