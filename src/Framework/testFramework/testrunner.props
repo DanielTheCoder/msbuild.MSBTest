@@ -33,7 +33,9 @@
   
   <!-- Tracing Settings-->
   <PropertyGroup Label="TracingSettings">
-    <TraceVars Condition="'$(TraceVars)' == ''">true</TraceVars>
+    <TraceAllVars Condition="'$(TraceAllVars)' == ''">false</TraceAllVars>
+    <TraceGlobalVars Condition="'$(TraceGlobalVars)'==''">false</TraceGlobalVars>
+    <!--<TraceTestVars Condition="'$(TraceTestVars)'==''">false</TraceTestVars>-->
   </PropertyGroup>
 
   <!-- Test Settings -->
@@ -47,13 +49,23 @@
       ExtensionsTasks=$(ExtensionsTasks);
       ExtensionsImports=$(ExtensionsImports);
       SourceRoot=$(SourceRoot);
+      SourceImports=$(SourceImports);
       TestsRoot=$(TestsRoot);
-      
     </TestCommonPaths>
-    <!--<TestTraceSettings>TraceVars=$(TraceVars)</TestTraceSettings>-->
-    <!--<TestAdditionalSettings Condition="'$(TestAdditionalSettings)'==''"></TestAdditionalSettings>-->
-    <!--<TestSettings>$(TestCommonPaths);$(TestTraceSettings);$(TestAdditionalSettings)</TestSettings>-->
-    <TestSettings>$(TestCommonPaths);</TestSettings>
+    <TestTraceSettings>
+      TraceAllVars=$(TraceAllVars);
+      TraceGlobalVars=$(TraceGlobalVars);
+    </TestTraceSettings>
+    <TestAdditionalSettings Condition="'$(TestAdditionalSettings)'==''">
+      
+    </TestAdditionalSettings>
+    
+    <TestSettings>
+      $(TestCommonPaths);
+      $(TestTraceSettings);
+      $(TestAdditionalSettings)
+    </TestSettings>
+    <!--<TestSettings>$(TestCommonPaths);</TestSettings>-->
   </PropertyGroup>
 
 </Project>
