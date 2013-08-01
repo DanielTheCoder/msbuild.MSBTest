@@ -28,7 +28,7 @@
     <Folder Include="tools\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".gitignore" />
+    <None Include=".gitignore" />
     <Content Include="content_additional\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildProjectDirectory)\.build\build.configuration.targets" />
