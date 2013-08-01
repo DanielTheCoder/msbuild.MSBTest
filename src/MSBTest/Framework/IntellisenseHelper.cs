@@ -17,7 +17,7 @@ namespace ConfigTransformation.Extensions
                 Log.LogError(messageInternal, Path.GetFileName(path), SearchFor);
                 //Log.LogError("Assert", "404", "", base.BuildEngine.ProjectFileOfTaskNode, base.BuildEngine.LineNumberOfTaskNode, base.BuildEngine.ColumnNumberOfTaskNode, 0, 0, messageInternal);
             }
-            
+            content.Replace(";", Environment.NewLine + " -");
             Log.LogMessage(MessageImportance.Normal, "");
 
         }
