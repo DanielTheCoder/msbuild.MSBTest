@@ -40,11 +40,11 @@
     <None Include="build\build.targets" />
     <None Include="extensions\imports.targets" />
     <None Include="src\imports.targets" />
-    <None Include="testFramework\references\import.Tasks.targets" />
+    <None Include="testFramework\targets\Tasks.targets" />
     <None Include="testFramework\tasks\FileAssert.targets" />
     <None Include="testFramework\tasks\HelloWorld.targets" />
-    <None Include="testFramework\references\import.Test.targets" />
-    <None Include="testFramework\references\import.Trace.targets" />
+    <None Include="testFramework\targets\Test.targets" />
+    <None Include="testFramework\targets\Trace.targets" />
     <None Include="testFramework\imports.targets" />
     <None Include="testFramework\testrunner.props" />
     <None Include="testFramework\testrunner.targets" />
