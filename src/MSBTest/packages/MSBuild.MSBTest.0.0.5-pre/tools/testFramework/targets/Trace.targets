@@ -23,7 +23,8 @@
     <Message Text="%09ExtensionsImports: $(ExtensionsImports)" Importance="high"/>
     <Message Text=" " Importance="high" />
     
-    <Message Text="%09SourceRoot: $(SourceRoot)" Importance="high"  />
+    <Message Text="%09SourceRoot:    $(SourceRoot)" Importance="high"  />
+    <Message Text="%09SourceImports: $(SourceImports)" Importance="high"  />
     <Message Text="%09TestsRoot:  $(TestsRoot)" Importance="high"  />
     <Message Text=" " Importance="high" />
 

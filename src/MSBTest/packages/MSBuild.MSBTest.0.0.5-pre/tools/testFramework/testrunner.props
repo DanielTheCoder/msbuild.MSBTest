@@ -4,7 +4,7 @@
     <RootDir>$(MSBuildProjectDirectory)\</RootDir>
     
     <TestFrameworkRoot>$(MSBuildThisFileDirectory)</TestFrameworkRoot>
-    <TestFrameworkReferencesRoot>$(TestFrameworkRoot)references\</TestFrameworkReferencesRoot>
+    <TestFrameworkReferencesRoot>$(TestFrameworkRoot)targets\</TestFrameworkReferencesRoot>
     <TestFrameworkImports>$(TestFrameworkRoot)imports.targets</TestFrameworkImports>
 
     <ExtensionsRoot>$(RootDir)extensions\</ExtensionsRoot>

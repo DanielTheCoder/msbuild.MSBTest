@@ -14,7 +14,7 @@
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Label="MSBTest">
-    <TestrunnerImport Condition=" '$(TestrunnerImport)'=='' ">$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\..\packages\MSBuild.MSBTest.0.0.1-pre\tools\testFramework\testrunner.targets ))</TestrunnerImport>
+    <TestrunnerImport Condition=" '$(TestrunnerImport)'=='' ">$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\..\packages\MSBuild.MSBTest.0.0.5-pre\tools\testFramework\testrunner.targets ))</TestrunnerImport>
   </PropertyGroup>
   <ItemGroup>
     <None Include=".build\Build.Configuration.targets" />
