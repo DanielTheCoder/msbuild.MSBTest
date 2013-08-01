@@ -1,2 +1,4 @@
-*.nupkg
-*.website
+build/*
+content/*
+lib/*
+tools/*
