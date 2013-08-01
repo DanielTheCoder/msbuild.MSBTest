@@ -1,15 +1,30 @@
 ﻿<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
 
+  <PropertyGroup>
+    <NugkgPublishFolder>$(MSBuildProjectDirectory)\..\Releases</NugkgPublishFolder>
+    <BuildTargets>
+      NugetCleanupFolderStructure;
+      NugetCreateFolderStructure;
+      CopyFrameworkFilesToNugetPackageStructure;
+      CreateNugetPackage;
+    </BuildTargets>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <nuspec Include="$(MSBuildProjectDirectory)\*.nuspec"/>
+  </ItemGroup>
+  
   <Target Name="Build">
-    <CallTarget Targets="CleanNugetFolderStructure;CopyFrameworkFilesToNugetPackageStructure" />
-    <Exec Command="nuget pack Framework.nuspec -OutputDirectory ../Releases" />
+    <CallTarget Targets="$(BuildTargets)" />
   </Target>
-  
+
   <Target Name="Clean">
-    <CallTarget Targets="CleanNugetFolderStructure" />
+    <CallTarget Targets="NugetCleanupFolderStructure" />
   </Target>
-  
-  <Target Name="Rebuild" />
+
+  <Target Name="Rebuild">
+    <CallTarget Targets="Build" />
+  </Target>
   <Target Name="Publish"/>
   <Target Name="GetNativeManifest" />
   <Target Name="GetCopyToOutputDirectoryItems" />
@@ -17,28 +32,32 @@
 
 
   <Target Name="CopyFrameworkFilesToNugetPackageStructure">
-    <!--<Exec Command="md $(MSBuildProjectDirectory)\tools" />
-    <Exec Command="md $(MSBuildProjectDirectory)\lib" />
-    <Exec Command="md $(MSBuildProjectDirectory)\content" />
-    <Exec Command="md $(MSBuildProjectDirectory)\build" />-->
-    
+
     <ItemGroup>
       <testFrameworkFiles Include="$(MSBuildProjectDirectory)\..\Framework\testFramework\**\*.*" Exclude="*.cs"/>
       <projectFiles       Include="$(MSBuildProjectDirectory)\..\Framework\build\**\*.*" />
     </ItemGroup>
-    
-    <Copy SourceFiles="@(testFrameworkFiles)" 
-          DestinationFolder="$(MSBuildProjectDirectory)\tools\testFramework\%(testFrameworkFiles.RecursiveDir)" 
+
+    <Copy SourceFiles="@(testFrameworkFiles)"
+          DestinationFolder="$(MSBuildProjectDirectory)\tools\testFramework\%(testFrameworkFiles.RecursiveDir)"
           OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
 
     <Copy SourceFiles="@(projectFiles)"
           DestinationFolder="$(MSBuildProjectDirectory)\tools\%(projectFiles.RecursiveDir)"
           OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
-    
+
   </Target>
 
-  <Target Name="CleanNugetFolderStructure">
-    
+  <Target Name="NugetCreateFolderStructure">
+    <!-- Ensure nuget Folder structure exists -->
+    <MakeDir Directories="$(MSBuildProjectDirectory)\lib" />
+    <MakeDir Directories="$(MSBuildProjectDirectory)\tools" />
+    <MakeDir Directories="$(MSBuildProjectDirectory)\content" />
+    <MakeDir Directories="$(MSBuildProjectDirectory)\build" />
+  </Target>
+  
+  <Target Name="NugetCleanupFolderStructure">
+
     <ItemGroup>
       <files Include="$(MSBuildProjectDirectory)\tools\**\*.*"/>
       <files Include="$(MSBuildProjectDirectory)\lib\**\*.*"/>
@@ -46,12 +65,19 @@
       <files Include="$(MSBuildProjectDirectory)\build\**\*.*"/>
       <folders Include="%(files.RelativeDir)" />
     </ItemGroup>
-    
+
     <Message Text="@(files)" />
     <Message Text="@(folders)" />
-    
+
     <Delete Files="@(files)" />
     <RemoveDir Directories="@(folders)" ContinueOnError="true" />
+  </Target>
+
+  <Target Name="CreateNugetPackage" >
+    <Message Text="nuspec: @(nuspec)" />
+    <Message Text="  %(nuspec.Identity)  Count: @(nuspec->Count())" />
+    <Message Text="nuget pack %(nuspec.Identity) -OutputDirectory $(NugkgPublishFolder)" Importance="normal" />
+    <Exec Command="nuget pack %(nuspec.Identity) -OutputDirectory $(NugkgPublishFolder)" />
   </Target>
   
 </Project>
