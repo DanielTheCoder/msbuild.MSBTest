@@ -1,0 +1,52 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0"  >
+  
+  <PropertyGroup Label="Framework defaults">
+    <RootDir>$(MSBuildProjectDirectory)\</RootDir>
+    
+    <TestFrameworkRoot>$(MSBuildThisFileDirectory)</TestFrameworkRoot>
+    <TestFrameworkReferencesRoot>$(TestFrameworkRoot)references\</TestFrameworkReferencesRoot>
+    <TestFrameworkImports>$(TestFrameworkRoot)imports.targets</TestFrameworkImports>
+
+    <ExtensionsRoot>$(RootDir)extensions\</ExtensionsRoot>
+    <ExtensionsTasks>$(ExtensionsRoot)Tasks\</ExtensionsTasks>
+    <ExtensionsImports>$(ExtensionsRoot)imports.targets</ExtensionsImports>
+    
+    <SourceRoot>$(RootDir)src\</SourceRoot>
+    <TestsRoot>$(RootDir)tests\</TestsRoot>
+
+  </PropertyGroup>
+
+  <!-- Find all tests -->
+  <ItemGroup Label="Testlist">
+    <Tests Include="$(TestsRoot)\**\Test.targets" />
+    <Tests Include="$(TestsRoot)\**\*.Test.targets" />
+    <Tests Include="$(TestsRoot)\**\Test.proj" />
+    <Tests Include="$(TestsRoot)\**\*.Test.proj" />
+  </ItemGroup>
+  
+  <!-- Tracing Settings-->
+  <PropertyGroup Label="TracingSettings">
+    <TraceVars Condition="'$(TraceVars)' == ''">true</TraceVars>
+  </PropertyGroup>
+
+  <!-- Test Settings -->
+  <PropertyGroup Label="Testsettings">
+    <TestCommonPaths>
+      RootDir=$(RootDir);
+      TestFrameworkRoot=$(TestFrameworkRoot);
+      TestFrameworkReferencesRoot=$(TestFrameworkReferencesRoot);
+      TestFrameworkImports=$(TestFrameworkImports);
+      ExtensionsRoot=$(ExtensionsRoot);
+      ExtensionsTasks=$(ExtensionsTasks);
+      ExtensionsImports=$(ExtensionsImports);
+      SourceRoot=$(SourceRoot);
+      TestsRoot=$(TestsRoot);
+      
+    </TestCommonPaths>
+    <!--<TestTraceSettings>TraceVars=$(TraceVars)</TestTraceSettings>-->
+    <!--<TestAdditionalSettings Condition="'$(TestAdditionalSettings)'==''"></TestAdditionalSettings>-->
+    <!--<TestSettings>$(TestCommonPaths);$(TestTraceSettings);$(TestAdditionalSettings)</TestSettings>-->
+    <TestSettings>$(TestCommonPaths);</TestSettings>
+  </PropertyGroup>
+
+</Project>
