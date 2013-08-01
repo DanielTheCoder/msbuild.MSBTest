@@ -29,7 +29,7 @@
     <Message Text="nuspec: @(nuspec)" />
     <Message Text="  %(nuspec.Identity)  Count: @(nuspec->Count())" />
     <Message Text="nuget pack %(nuspec.Identity) -OutputDirectory $(NugkgReleaseFolder)" Importance="normal" />
-    <Exec Command="nuget pack %(nuspec.Identity) -OutputDirectory $(NugkgReleaseFolder)" />
+    <Exec Command="nuget pack %(nuspec.Identity) -OutputDirectory $(NugkgReleaseFolder) -NoDefaultExcludes" />
   </Target>
   
 </Project>

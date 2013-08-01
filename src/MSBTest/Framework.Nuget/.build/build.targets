@@ -45,6 +45,8 @@
     <ItemGroup>
       <testFrameworkFiles Include="$(MSBuildProjectDirectory)\..\Framework\testFramework\**\*.*" Exclude="*.cs"/>
       <projectFiles       Include="$(MSBuildProjectDirectory)\..\Framework\build\**\*.*" />
+      <!--<tools Include="$(MSBuildProjectDirectory)\tools_additional\Install.ps1"/>
+      <tools Include="$(MSBuildProjectDirectory)\tools_additional\MSBTest.NuGet.template.proj"/>-->
     </ItemGroup>
 
     <Copy SourceFiles="@(testFrameworkFiles)"
@@ -55,13 +57,16 @@
           DestinationFolder="$(MSBuildProjectDirectory)\tools\build\%(projectFiles.RecursiveDir)"
           OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
 
+    <Copy SourceFiles="@(projectFiles)"
+          DestinationFolder="$(MSBuildProjectDirectory)\content\.build\%(projectFiles.RecursiveDir)"
+          OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
+    
     <ItemGroup>
-      <!--<tools Include="$(MSBuildProjectDirectory)\tools_additional\Install.ps1"/>
-      <tools Include="$(MSBuildProjectDirectory)\tools_additional\MSBTest.NuGet.template.proj"/>-->
       <tools Include="$(MSBuildProjectDirectory)\tools_additional\**\*.*"/>
       <content Include="$(MSBuildProjectDirectory)\content_additional\**\*.*"/>
     </ItemGroup>
     
+    <!-- additional includes -->
     <Copy SourceFiles="@(tools)" 
           DestinationFolder="$(MSBuildProjectDirectory)\tools\%(projectFiles.RecursiveDir)"
           OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
