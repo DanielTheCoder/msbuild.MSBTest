@@ -7,16 +7,10 @@
     <Message Text="&gt;---- RunTests Start-------------------------" Importance="normal" />
     
     <CallTarget Targets="CleanTests;_TraceGlobalVars" />
-
-    <PropertyGroup>
-      <_testProperties>ProjectDir=%(Tests.RootDir)%(Tests.Directory);TestSettings=$(TestSettings);Test=%(Tests.FullPath)</_testProperties>
-    </PropertyGroup>
-    
-    <Message Text="$(_testProperties)" Importance="normal" />
     
     <MSBuild Projects="$(MSBuildProjectFile)"
              Targets="_RunTest"
-             Properties="$(_testProperties)"
+             Properties="ProjectDir=%(Tests.RootDir)%(Tests.Directory);TestSettings=$(TestSettings);Test=%(Tests.FullPath)"
              BuildInParallel="true"/>
     
     <Message Text="&gt;---- RunTests End-------------------------" Importance="normal" />
