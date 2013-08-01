@@ -3,11 +3,11 @@
   <PropertyGroup Label="Framework defaults">
     <RootDir>$(MSBuildProjectDirectory)\</RootDir>
     
-    <TestFrameworkRoot>$(RootDir)testFramework\</TestFrameworkRoot>
+    <TestFrameworkRoot>$(MSBuildThisFileDirectory)</TestFrameworkRoot>
     <TestFrameworkReferencesRoot>$(TestFrameworkRoot)references\</TestFrameworkReferencesRoot>
     <TestFrameworkImports>$(TestFrameworkRoot)imports.targets</TestFrameworkImports>
 
-    <ExtensionsRoot>$(TestFrameworkRoot)extensions\</ExtensionsRoot>
+    <ExtensionsRoot>$(RootDir)extensions\</ExtensionsRoot>
     <ExtensionsTasks>$(ExtensionsRoot)Tasks\</ExtensionsTasks>
     <ExtensionsImports>$(ExtensionsRoot)imports.targets</ExtensionsImports>
     

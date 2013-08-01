@@ -31,7 +31,8 @@
   </Target>
 
   <Target Name="Publish">
-   <CallTarget Condition="'$(PublishToLocalNugetFeed)' == 'true'" Targets="PusblishToLocalFeed" />
+    <CallTarget Targets="Build"/>
+    <CallTarget Condition="'$(PublishToLocalNugetFeed)' == 'true'" Targets="PusblishToLocalFeed" />
   </Target>
   
   <Target Name="GetNativeManifest" />
@@ -54,6 +55,21 @@
           DestinationFolder="$(MSBuildProjectDirectory)\tools\build\%(projectFiles.RecursiveDir)"
           OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
 
+    <ItemGroup>
+      <!--<tools Include="$(MSBuildProjectDirectory)\tools_additional\Install.ps1"/>
+      <tools Include="$(MSBuildProjectDirectory)\tools_additional\MSBTest.NuGet.template.proj"/>-->
+      <tools Include="$(MSBuildProjectDirectory)\tools_additional\**\*.*"/>
+      <content Include="$(MSBuildProjectDirectory)\content_additional\**\*.*"/>
+    </ItemGroup>
+    
+    <Copy SourceFiles="@(tools)" 
+          DestinationFolder="$(MSBuildProjectDirectory)\tools\%(projectFiles.RecursiveDir)"
+          OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
+
+    <Copy SourceFiles="@(content)"
+          DestinationFolder="$(MSBuildProjectDirectory)\content\%(projectFiles.RecursiveDir)"
+          OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
+    
   </Target>
 
   <!-- Publish.targets-->

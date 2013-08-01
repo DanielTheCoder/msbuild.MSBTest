@@ -6,7 +6,7 @@
     <!-- Import for nuget -->
     <TestrunnerImport Condition="!Exists('$(TestrunnerImport)')">$(MSBuildThisFileDirectory)..\testFramework\testrunner.targets</TestrunnerImport>
   </PropertyGroup>
-  <Import Project="$(MSBuildProjectDirectory)\testFramework\testrunner.targets" />
+  <Import Project="$(TestrunnerImport)" />
 
   <Target Name="Build">
     <CallTarget Targets="RunTests" />
