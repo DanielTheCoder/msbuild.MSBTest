@@ -190,7 +190,7 @@ EnsureProjectFileIsWriteable
 
 
 # Update the Project file to import the .targets file
-$relPathToTargets = ComputeRelativePathToTargetsFile -startPath ($projItem = Get-Item $project.FullName) -targetPath (Get-Item ("{0}\tools\build\build.targets" -f $rootPath))
+# $relPathToTargets = ComputeRelativePathToTargetsFile -startPath ($projItem = Get-Item $project.FullName) -targetPath (Get-Item ("{0}\tools\build\build.targets" -f $rootPath))
 
 $projectMSBuild = [Microsoft.Build.Construction.ProjectRootElement]::Open($projFile)
 
@@ -198,17 +198,22 @@ RemoveExistingSlowCheetahPropertyGroups -projectRootElement $projectMSBuild
 $propertyGroup = $projectMSBuild.AddPropertyGroup()
 $propertyGroup.Label = $scLabel
 
-$propEnableNuGetImport = $propertyGroup.AddProperty('MSBTest_EnableImportFromNuGet', 'true');
-$propEnableNuGetImport.Condition = ' ''$(SC_EnableImportFromNuGet)''=='''' ';
+# $propEnableNuGetImport = $propertyGroup.AddProperty('MSBTest_EnableImportFromNuGet', 'true');
+# $propEnableNuGetImport.Condition = ' ''$(SC_EnableImportFromNuGet)''=='''' ';
 
+# $importStmt = ('$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\{0} ))' -f $relPathToTargets)
+# $propNuGetImportPath = $propertyGroup.AddProperty('MSBTest_NuGetImportPath', "$importStmt");
+# $propNuGetImportPath.Condition = ' ''$(MSBTest_NuGetImportPath)''=='''' ';
+
+# $propImport = $propertyGroup.AddProperty('MSBTestTargets', '$(MSBTest_NuGetImportPath)');
+# $propImport.Condition = ' ''$(MSBTest_EnableImportFromNuGet)''==''true'' and Exists(''$(MSBTest_NuGetImportPath)'') ';
+
+# AddImportElementIfNotExists -projectRootElement $projectMSBuild
+
+$relPathToTargets = ComputeRelativePathToTargetsFile -startPath ($projItem = Get-Item $project.FullName) -targetPath (Get-Item ("{0}\tools\testFramework\testrunner.targets" -f $rootPath))
 $importStmt = ('$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\{0} ))' -f $relPathToTargets)
-$propNuGetImportPath = $propertyGroup.AddProperty('MSBTest_NuGetImportPath', "$importStmt");
-$propNuGetImportPath.Condition = ' ''$(MSBTest_NuGetImportPath)''=='''' ';
-
-$propImport = $propertyGroup.AddProperty('MSBTestTargets', '$(MSBTest_NuGetImportPath)');
-$propImport.Condition = ' ''$(MSBTest_EnableImportFromNuGet)''==''true'' and Exists(''$(MSBTest_NuGetImportPath)'') ';
-
-AddImportElementIfNotExists -projectRootElement $projectMSBuild
+$propNuGetImportPath = $propertyGroup.AddProperty('TestrunnerImport', "$importStmt");
+$propNuGetImportPath.Condition = ' ''$(TestrunnerImport)''=='''' ';
 
 $projectMSBuild.Save()
 
