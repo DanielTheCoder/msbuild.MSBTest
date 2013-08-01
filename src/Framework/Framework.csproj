@@ -36,8 +36,8 @@
   <ItemGroup>
     <None Include=".build\build.configuration.targets" />
     <None Include=".build\build.targets" />
-    <None Include="build\Build.Configuration.targets" />
-    <None Include="build\build.targets" />
+    <None Include="build\MSBTest.props" />
+    <None Include="build\MSBTest.targets" />
     <None Include="extensions\imports.targets" />
     <None Include="src\imports.targets" />
     <None Include="testFramework\targets\Tasks.targets" />

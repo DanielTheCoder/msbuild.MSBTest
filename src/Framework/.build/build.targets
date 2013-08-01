@@ -1,6 +1,6 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0"  >
 
-  <Import Project="$(MSBuildProjectDirectory)\build\build.targets" />
+  <Import Project="$(MSBuildProjectDirectory)\build\MSBTest.targets" />
 
   <!--<Target Name="Build" />
   <Target Name="Clean" />
