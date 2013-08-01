@@ -51,7 +51,6 @@
              Targets="$(TestTargets)"
              Properties="ProjectDir=$(ProjectDir);$(TestSettings)"
              BuildInParallel="true"/>
-    
   </Target>
   
 </Project>

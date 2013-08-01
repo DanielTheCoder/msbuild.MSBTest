@@ -1,13 +1,10 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0"  >
 
-  <!--<Target Name="TraceVars" Condition="'$(TraceVars)' == 'true'">
-    <CallTarget Targets="_TraceGlobalVars;_TraceTestVars;"/>
-  </Target>-->
-  
-  <Target Name="_TraceGlobalVars" Condition="'$(TraceVars)' == 'true'">
+  <Target Name="_TraceGlobalVars" Condition="'$(TraceAllVars)'=='true' OR '$(TraceGlobalVars)'=='true'">
     <Message Text="&gt;-- TraceGlobalVars - Start"    Importance="high" />
 
-    <Message Text="%09TraceVars:  $(TraceVars)" Importance="high" />
+    <Message Text="%09TraceVars:        $(TraceAllVars)" Importance="high" />
+    <Message Text="%09TraceGlobalVars:  $(TraceGlobalVars)" Importance="high" />
     <Message Text=" " Importance="high" />
     
     <Message Text="%09RootDir:  $(RootDir)" Importance="high" />
@@ -34,9 +31,15 @@
     <Message Text="&gt;-- TraceGlobalVars - Complete"    Importance="high" />
   </Target>
 
-  <Target Name="_TraceTestVars" Condition="'$(TraceVars)' == 'true'">
+  
+  
+  <Target Name="_TraceTestVars" Condition="'$(TraceAllVars)'=='true' OR '$(TraceTestVars)'=='true'">
     <Message Text="&gt;-- TraceTestVars - Start"    Importance="high" />
 
+    <Message Text="%09TraceVars:      $(TraceAllVars)" Importance="high" />
+    <Message Text="%09TraceTestVars:  $(TraceTestVars)" Importance="high" />
+    <Message Text=" " Importance="high" />
+    
     <Message Text="%09ProjectDir:  $(ProjectDir)" Importance="high"/>
     <Message Text="%09Test:        $(Test)" Importance="high"/>
     <Message Text="%09TestIgnored: $(TestIgnored)" Importance="high"/>
