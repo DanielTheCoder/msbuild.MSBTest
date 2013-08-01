@@ -7,22 +7,27 @@
 
   <ItemGroup>
     <additionalFiles Include="$(MSBuildProjectDirectory)\..\Framework\testFramework\**\*.*">
-      <targetFolder>tools/testFramework</targetFolder>
+      <nuspec>Framework.nuspec</nuspec>
+      <targetFolder>Framework/tools/testFramework</targetFolder>
     </additionalFiles>
 
     <additionalFiles Include="$(MSBuildProjectDirectory)\..\Framework\build\**\*.*">
-      <targetFolder>content/.build</targetFolder>
+      <nuspec>Framework.nuspec</nuspec>
+      <targetFolder>Framework/content/.build</targetFolder>
     </additionalFiles>
 
-    <!-- templates, extensions, src -->
+    <!-- samples, templates, extensions, src -->
     <additionalFiles     Include="$(MSBuildProjectDirectory)\..\Framework\extensions\**\*.*">
-      <targetFolder>content/extensions</targetFolder>
+      <nuspec>Framework.Structure.nuspec</nuspec>
+      <targetFolder>Framework.samples/content/extensions</targetFolder>
     </additionalFiles>
     <additionalFiles     Include="$(MSBuildProjectDirectory)\..\Framework\src\**\*.*">
-      <targetFolder>content/src</targetFolder>
+      <nuspec>Framework.Structure.nuspec</nuspec>
+      <targetFolder>Framework.samples/content/src</targetFolder>
     </additionalFiles>
     <additionalFiles     Include="$(MSBuildProjectDirectory)\..\Framework\tests\**\*.*">
-      <targetFolder>content/tests</targetFolder>
+      <nuspec>Framework.Structure.nuspec</nuspec>
+      <targetFolder>Framework.samples/content/tests</targetFolder>
     </additionalFiles>
   </ItemGroup>
   

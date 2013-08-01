@@ -19,28 +19,37 @@
   <ItemGroup>
     <nuspec Include="$(MSBuildProjectDirectory)\*.nuspec"/>
   </ItemGroup>
+
+
+  <Target Name="NugetCreatePackages">
+    <CallTarget Targets="$(BuildTargets)" />
+  </Target>
+  
+  
+  
+  
   
   <Target Name="NugetCreateFolderStructure">
     <!-- Ensure nuget Folder structure exists -->
-    <MakeDir Directories="$(NugetStage)\lib" />
-    <MakeDir Directories="$(NugetStage)\tools" />
-    <MakeDir Directories="$(NugetStage)\content" />
-    <MakeDir Directories="$(NugetStage)\build" />
+    <MakeDir Directories="$(NugetStage)\%(nuspec.Filename)\lib" />
+    <MakeDir Directories="$(NugetStage)\%(nuspec.Filename)\tools" />
+    <MakeDir Directories="$(NugetStage)\%(nuspec.Filename)\content" />
+    <MakeDir Directories="$(NugetStage)\%(nuspec.Filename)\build" />
   </Target>
 
   <Target Name="NugetCopyAdditionalFiles">
     <ItemGroup>
-      <additionalFiles Include="$(MSBuildProjectDirectory)\tools\**\*.*">
-        <targetFolder>tools</targetFolder>
+      <additionalFiles Include="$(MSBuildProjectDirectory)\%(nuspec.Filename)\tools\**\*.*">
+        <targetFolder>%(nuspec.Filename)\tools</targetFolder>
       </additionalFiles>
-      <additionalFiles Include="$(MSBuildProjectDirectory)\content\**\*.*">
-        <targetFolder>content</targetFolder>
+      <additionalFiles Include="$(MSBuildProjectDirectory)\%(nuspec.Filename)\content\**\*.*">
+        <targetFolder>%(nuspec.Filename)\content</targetFolder>
       </additionalFiles>
-      <additionalFiles Include="$(MSBuildProjectDirectory)\build\**\*.*">
-        <targetFolder>build</targetFolder>
+      <additionalFiles Include="$(MSBuildProjectDirectory)\%(nuspec.Filename)\build\**\*.*">
+        <targetFolder>%(nuspec.Filename)\build</targetFolder>
       </additionalFiles>
-      <additionalFiles Include="$(MSBuildProjectDirectory)\lib\**\*.*">
-        <targetFolder>lib</targetFolder>
+      <additionalFiles Include="$(MSBuildProjectDirectory)\%(nuspec.Filename)\lib\**\*.*">
+        <targetFolder>%(nuspec.Filename)\lib</targetFolder>
       </additionalFiles>
     </ItemGroup>
 
@@ -53,10 +62,11 @@
   <Target Name="NugetCleanupFolderStructure">
 
     <ItemGroup>
-      <files Include="$(NugetStage)\tools\**\*.*"/>
+      <files Include="$(NugetStage)"/>
+      <!--<files Include="$(NugetStage)\tools\**\*.*"/>
       <files Include="$(NugetStage)\lib\**\*.*"/>
       <files Include="$(NugetStage)\content\**\*.*"/>
-      <files Include="$(NugetStage)\build\**\*.*"/>
+      <files Include="$(NugetStage)\build\**\*.*"/>-->
       <folders Include="%(files.RelativeDir)" />
     </ItemGroup>
 
@@ -69,13 +79,13 @@
 
   <Target Name="NugetCopyNuspec">
     <Copy SourceFiles="@(nuspec)"
-          DestinationFolder="$(NugetStage)"
+          DestinationFolder="$(NugetStage)\%(nuspec.Filename)"
           OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
   </Target>
   
   <Target Name="NugetCreatePackage" >
     <ItemGroup>
-      <nuspecStaged Include="$(NugetStage)\*.nuspec"/>
+      <nuspecStaged Include="$(NugetStage)\%(nuspec.Filename)\*.nuspec"/>
     </ItemGroup>
 
     <MakeDir Directories="$(NugkgReleaseFolder)" />
