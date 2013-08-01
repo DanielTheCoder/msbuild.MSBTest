@@ -27,27 +27,23 @@
 
   <Target Name="NugetCopyAdditionalFiles">
     <ItemGroup>
-      <tools Include="$(MSBuildProjectDirectory)\tools_additional\**\*.*"/>
-      <content Include="$(MSBuildProjectDirectory)\content_additional\**\*.*"/>
-      <build Include="$(MSBuildProjectDirectory)\build_additional\**\*.*"/>
-      <lib Include="$(MSBuildProjectDirectory)\lib_additional\**\*.*"/>
+      <additionalFiles Include="$(MSBuildProjectDirectory)\tools_additional\**\*.*">
+        <targetFolder>tools</targetFolder>
+      </additionalFiles>
+      <additionalFiles Include="$(MSBuildProjectDirectory)\content_additional\**\*.*">
+        <targetFolder>content</targetFolder>
+      </additionalFiles>
+      <additionalFiles Include="$(MSBuildProjectDirectory)\build_additional\**\*.*">
+        <targetFolder>build</targetFolder>
+      </additionalFiles>
+      <additionalFiles Include="$(MSBuildProjectDirectory)\lib_additional\**\*.*">
+        <targetFolder>lib</targetFolder>
+      </additionalFiles>
     </ItemGroup>
 
     <!-- additional includes -->
-    <Copy SourceFiles="@(tools)"
-          DestinationFolder="$(MSBuildProjectDirectory)\tools\%(projectFiles.RecursiveDir)"
-          OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
-
-    <Copy SourceFiles="@(content)"
-          DestinationFolder="$(MSBuildProjectDirectory)\content\%(projectFiles.RecursiveDir)"
-          OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
-
-    <Copy SourceFiles="@(build)"
-          DestinationFolder="$(MSBuildProjectDirectory)\build\%(projectFiles.RecursiveDir)"
-          OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
-
-    <Copy SourceFiles="@(lib)"
-          DestinationFolder="$(MSBuildProjectDirectory)\lib\%(projectFiles.RecursiveDir)"
+    <Copy SourceFiles="@(additionalFiles)"
+          DestinationFolder="$(MSBuildProjectDirectory)\%(additionalFiles.targetFolder)\%(additionalFiles.RecursiveDir)"
           OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
   </Target>
 
@@ -69,8 +65,8 @@
   </Target>
 
   <Target Name="CreateNugetPackages" >
-    <Message Text="nuspec: @(nuspec)" />
-    <Message Text="  %(nuspec.Identity)  Count: @(nuspec->Count())" />
+    <Message Text="nuspec: @(nuspec)" Importance="normal"/>
+    <Message Text="  %(nuspec.Identity)  Count: @(nuspec->Count())" Importance="normal" />
     <Message Text="nuget pack %(nuspec.Identity) -OutputDirectory $(NugkgReleaseFolder)" Importance="normal" />
     <Exec Command="nuget pack %(nuspec.Identity) -OutputDirectory $(NugkgReleaseFolder) -NoDefaultExcludes" />
   </Target>

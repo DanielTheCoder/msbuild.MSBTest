@@ -27,28 +27,35 @@
   <Target Name="CopyCustomFilesToNugetPackageStructure">
 
     <ItemGroup>
-      <testFrameworkFiles Include="$(MSBuildProjectDirectory)\..\Framework\testFramework\**\*.*" Exclude="*.cs"/>
-      <projectFiles       Include="$(MSBuildProjectDirectory)\..\Framework\build\**\*.*" />
+
+      <tools Include="$(MSBuildProjectDirectory)\..\Framework\testFramework\**\*.*">
+        <targetFolder>testFramework</targetFolder>
+      </tools>
       
-      <!-- templates -->
-      <extensionFiles     Include="$(MSBuildProjectDirectory)\..\Framework\extensions\**\*.*">
+      <content Include="$(MSBuildProjectDirectory)\..\Framework\build\**\*.*">
+        <targetFolder>.build</targetFolder>
+      </content>
+      
+      <!-- templates, extensions, src -->
+      <content     Include="$(MSBuildProjectDirectory)\..\Framework\extensions\**\*.*">
         <targetFolder>extensions</targetFolder>
-      </extensionFiles>
-      <srcFiles           Include="$(MSBuildProjectDirectory)\..\Framework\src\**\*.*" />
-      <testsFiles         Include="$(MSBuildProjectDirectory)\..\Framework\tests\**\*.*" />
+      </content>
+      <content     Include="$(MSBuildProjectDirectory)\..\Framework\src\**\*.*">
+        <targetFolder>src</targetFolder>
+      </content>
+      <content     Include="$(MSBuildProjectDirectory)\..\Framework\tests\**\*.*">
+        <targetFolder>tests</targetFolder>
+      </content>
     </ItemGroup>
 
-    <Copy SourceFiles="@(testFrameworkFiles)"
-          DestinationFolder="$(MSBuildProjectDirectory)\tools\testFramework\%(testFrameworkFiles.RecursiveDir)"
+    <Copy SourceFiles="@(tools)"
+          DestinationFolder="$(MSBuildProjectDirectory)\tools\testFramework\%(tools.RecursiveDir)"
           OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
-
-    <Copy SourceFiles="@(projectFiles)"
-          DestinationFolder="$(MSBuildProjectDirectory)\tools\build\%(projectFiles.RecursiveDir)"
+    
+    <Copy SourceFiles="@(content)"
+          DestinationFolder="$(MSBuildProjectDirectory)\content\%(content.targetFolder)\%(content.RecursiveDir)"
           OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
-
-    <!--<Copy SourceFiles="@(extensionFiles)"
-          DestinationFolder="$(MSBuildProjectDirectory)\content\%(projectFiles.targetFolder)\%(projectFiles.RecursiveDir)"
-          OverwriteReadOnlyFiles="true" ContinueOnError="true"/>-->
+    
   </Target>
   
   <!-- Publish.targets-->
