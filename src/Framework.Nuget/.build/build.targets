@@ -22,40 +22,6 @@
   <Target Name="GetNativeManifest" />
   <Target Name="GetCopyToOutputDirectoryItems" />
   <Target Name="AfterBuild" AfterTargets="Build" />
-
-
-  <!--<Target Name="CopyCustomFilesToNugetPackageStructure">
-
-    <ItemGroup>
-      <tools Include="$(MSBuildProjectDirectory)\..\Framework\testFramework\**\*.*">
-        <targetFolder>testFramework</targetFolder>
-      </tools>
-      
-      <content Include="$(MSBuildProjectDirectory)\..\Framework\build\**\*.*">
-        <targetFolder>.build</targetFolder>
-      </content>
-      
-      --><!-- templates, extensions, src --><!--
-      <content     Include="$(MSBuildProjectDirectory)\..\Framework\extensions\**\*.*">
-        <targetFolder>extensions</targetFolder>
-      </content>
-      <content     Include="$(MSBuildProjectDirectory)\..\Framework\src\**\*.*">
-        <targetFolder>src</targetFolder>
-      </content>
-      <content     Include="$(MSBuildProjectDirectory)\..\Framework\tests\**\*.*">
-        <targetFolder>tests</targetFolder>
-      </content>
-    </ItemGroup>
-
-    <Copy SourceFiles="@(tools)"
-          DestinationFolder="$(NugetStage)\tools\testFramework\%(tools.RecursiveDir)"
-          OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
-    
-    <Copy SourceFiles="@(content)"
-          DestinationFolder="$(NugetStage)\content\%(content.targetFolder)\%(content.RecursiveDir)"
-          OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
-    
-  </Target>-->
-  
+ 
   
 </Project>

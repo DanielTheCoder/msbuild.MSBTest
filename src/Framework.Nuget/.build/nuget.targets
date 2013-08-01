@@ -3,8 +3,10 @@
   <PropertyGroup>
     <NugetStage>$(MSBuildProjectDirectory)\obj\nugetstage\</NugetStage>
     <PublishToLocalNugetFeed Condition="'$(PublishToLocalNugetFeed)'==''">true</PublishToLocalNugetFeed>
-    <NugkgPublishFolder Condition="'$(NugkgPublishFolder)'==''">$(MSBuildProjectDirectory)\..\Publish\</NugkgPublishFolder>
-    <NugkgReleaseFolder Condition="'$(NugkgReleaseFolder)'==''">$(MSBuildProjectDirectory)\..\Releases\</NugkgReleaseFolder>
+    
+    <NugkgPublishFolder Condition="'$(NugkgPublishFolder)'==''">$(MSBuildProjectDirectory)\..\..\Publish\</NugkgPublishFolder>
+    <NugkgReleaseFolder Condition="'$(NugkgReleaseFolder)'==''">$(MSBuildProjectDirectory)\..\..\Releases\</NugkgReleaseFolder>
+    
     <BuildTargets>
       NugetCleanupFolderStructure;
       NugetCreateFolderStructure;
@@ -75,6 +77,8 @@
     <ItemGroup>
       <nuspecStaged Include="$(NugetStage)\*.nuspec"/>
     </ItemGroup>
+
+    <MakeDir Directories="$(NugkgReleaseFolder)" />
     
     <Message Text="nuspec: @(nuspecStaged)" Importance="normal"/>
     <Message Text="  %(nuspecStaged.Identity)  Count: @(nuspecStaged->Count())" Importance="normal" />
@@ -87,6 +91,8 @@
       <nupkg Include="$(NugkgReleaseFolder)**\*.nupkg"/>
     </ItemGroup>
 
+    <MakeDir Directories="$(NugkgPublishFolder)" />
+    
     <Copy SourceFiles="@(nupkg)"
           DestinationFolder="$(NugkgPublishFolder)%(nupkg.RecursiveDir)"
           OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
