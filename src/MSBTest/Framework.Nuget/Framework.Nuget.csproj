@@ -21,12 +21,7 @@
     <None Include="Framework.nuspec" />
     <None Include="tools_additional\Install.ps1" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="build\" />
-    <Folder Include="content\" />
-    <Folder Include="lib\" />
-    <Folder Include="tools\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include=".gitignore" />
     <Content Include="content_additional\readme.txt" />

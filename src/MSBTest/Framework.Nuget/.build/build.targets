@@ -49,11 +49,11 @@
     </ItemGroup>
 
     <Copy SourceFiles="@(tools)"
-          DestinationFolder="$(MSBuildProjectDirectory)\tools\testFramework\%(tools.RecursiveDir)"
+          DestinationFolder="$(NugetStage)\tools\testFramework\%(tools.RecursiveDir)"
           OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
     
     <Copy SourceFiles="@(content)"
-          DestinationFolder="$(MSBuildProjectDirectory)\content\%(content.targetFolder)\%(content.RecursiveDir)"
+          DestinationFolder="$(NugetStage)\content\%(content.targetFolder)\%(content.RecursiveDir)"
           OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
     
   </Target>

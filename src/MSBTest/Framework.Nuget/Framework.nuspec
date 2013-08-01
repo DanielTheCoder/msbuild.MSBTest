@@ -16,12 +16,12 @@
     <tags>MSBuild Test MSBTest</tags>
   </metadata>
   
-  <files>
+  <!--<files>
     <file src="tools\**\*.*" target="tools" exclude="**\*.log" />
     <file src="build\*.*" target="build" exclude="**\*.log" />
     <file src="content\*.*" target="content" exclude="**\*.log" />
     <file src="content\.build\*.*" target="content\.build" exclude="**\*.log" />
     <file src="lib\**\*.*" target="lib" exclude="**\*.log" />
-  </files>
+  </files>-->
   
 </package>

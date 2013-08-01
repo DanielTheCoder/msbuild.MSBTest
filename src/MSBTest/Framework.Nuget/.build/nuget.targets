@@ -1,6 +1,7 @@
 ﻿<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
 
   <PropertyGroup>
+    <NugetStage>$(MSBuildProjectDirectory)\obj\nugetstage\</NugetStage>
     <PublishToLocalNugetFeed Condition="'$(PublishToLocalNugetFeed)'==''">true</PublishToLocalNugetFeed>
     <NugkgPublishFolder Condition="'$(NugkgPublishFolder)'==''">$(MSBuildProjectDirectory)\..\Publish\</NugkgPublishFolder>
     <NugkgReleaseFolder Condition="'$(NugkgReleaseFolder)'==''">$(MSBuildProjectDirectory)\..\Releases\</NugkgReleaseFolder>
@@ -9,7 +10,8 @@
       NugetCreateFolderStructure;
       CopyCustomFilesToNugetPackageStructure;
       NugetCopyAdditionalFiles;
-      CreateNugetPackages;
+      NugetCopyNuspec;
+      NugetCreatePackage;
     </BuildTargets>
   </PropertyGroup>
 
@@ -19,10 +21,10 @@
   
   <Target Name="NugetCreateFolderStructure">
     <!-- Ensure nuget Folder structure exists -->
-    <MakeDir Directories="$(MSBuildProjectDirectory)\lib" />
-    <MakeDir Directories="$(MSBuildProjectDirectory)\tools" />
-    <MakeDir Directories="$(MSBuildProjectDirectory)\content" />
-    <MakeDir Directories="$(MSBuildProjectDirectory)\build" />
+    <MakeDir Directories="$(NugetStage)\lib" />
+    <MakeDir Directories="$(NugetStage)\tools" />
+    <MakeDir Directories="$(NugetStage)\content" />
+    <MakeDir Directories="$(NugetStage)\build" />
   </Target>
 
   <Target Name="NugetCopyAdditionalFiles">
@@ -43,17 +45,17 @@
 
     <!-- additional includes -->
     <Copy SourceFiles="@(additionalFiles)"
-          DestinationFolder="$(MSBuildProjectDirectory)\%(additionalFiles.targetFolder)\%(additionalFiles.RecursiveDir)"
+          DestinationFolder="$(NugetStage)\%(additionalFiles.targetFolder)\%(additionalFiles.RecursiveDir)"
           OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
   </Target>
 
   <Target Name="NugetCleanupFolderStructure">
 
     <ItemGroup>
-      <files Include="$(MSBuildProjectDirectory)\tools\**\*.*"/>
-      <files Include="$(MSBuildProjectDirectory)\lib\**\*.*"/>
-      <files Include="$(MSBuildProjectDirectory)\content\**\*.*"/>
-      <files Include="$(MSBuildProjectDirectory)\build\**\*.*"/>
+      <files Include="$(NugetStage)\tools\**\*.*"/>
+      <files Include="$(NugetStage)\lib\**\*.*"/>
+      <files Include="$(NugetStage)\content\**\*.*"/>
+      <files Include="$(NugetStage)\build\**\*.*"/>
       <folders Include="%(files.RelativeDir)" />
     </ItemGroup>
 
@@ -64,11 +66,21 @@
     <RemoveDir Directories="@(folders)" ContinueOnError="true" />
   </Target>
 
-  <Target Name="CreateNugetPackages" >
-    <Message Text="nuspec: @(nuspec)" Importance="normal"/>
-    <Message Text="  %(nuspec.Identity)  Count: @(nuspec->Count())" Importance="normal" />
-    <Message Text="nuget pack %(nuspec.Identity) -OutputDirectory $(NugkgReleaseFolder)" Importance="normal" />
-    <Exec Command="nuget pack %(nuspec.Identity) -OutputDirectory $(NugkgReleaseFolder) -NoDefaultExcludes" />
+  <Target Name="NugetCopyNuspec">
+    <Copy SourceFiles="@(nuspec)"
+          DestinationFolder="$(NugetStage)"
+          OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
+  </Target>
+  
+  <Target Name="NugetCreatePackage" >
+    <ItemGroup>
+      <nuspecStaged Include="$(NugetStage)\*.nuspec"/>
+    </ItemGroup>
+    
+    <Message Text="nuspec: @(nuspecStaged)" Importance="normal"/>
+    <Message Text="  %(nuspecStaged.Identity)  Count: @(nuspecStaged->Count())" Importance="normal" />
+    <Message Text="nuget pack %(nuspecStaged.Identity) -OutputDirectory $(NugkgReleaseFolder) -NoDefaultExcludes" Importance="normal" />
+    <Exec Command="nuget pack %(nuspecStaged.Identity) -OutputDirectory $(NugkgReleaseFolder) -NoDefaultExcludes" />
   </Target>
   
 </Project>
