@@ -23,6 +23,12 @@
     <Tests Include="$(TestsRoot)\**\Test.proj" />
     <Tests Include="$(TestsRoot)\**\*.Test.proj" />
   </ItemGroup>
+
+  <PropertyGroup>
+    <TestCount>@(Tests->Count())</TestCount>
+    <TestList>$(Tests)</TestList>
+    <TestList>$(TestList.Replace(";", Environment.NewLine + " -"))</TestList>
+  </PropertyGroup>
   
   <!-- Tracing Settings-->
   <PropertyGroup Label="TracingSettings">

@@ -2,12 +2,12 @@
 
   <Import Project="$(MSBuildProjectDirectory)\build\build.targets" />
 
-  <Target Name="Build"/>
+  <!--<Target Name="Build" />
   <Target Name="Clean" />
   <Target Name="Rebuild" />
   <Target Name="Publish"/>
   <Target Name="GetNativeManifest" />
   <Target Name="GetCopyToOutputDirectoryItems" />
-  <Target Name="AfterBuild" AfterTargets="Build" />
+  <Target Name="AfterBuild" AfterTargets="Build" />-->
 
 </Project>

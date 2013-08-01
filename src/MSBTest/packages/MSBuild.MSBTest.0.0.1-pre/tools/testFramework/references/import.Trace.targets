@@ -25,6 +25,10 @@
     
     <Message Text="%09SourceRoot: $(SourceRoot)" Importance="high"  />
     <Message Text="%09TestsRoot:  $(TestsRoot)" Importance="high"  />
+    <Message Text=" " Importance="high" />
+
+    <Message Text="%09TestCount:  $(TestCount)" Importance="high"  />
+    <Message Text="%09TestList:  $(TestList)" Importance="high"  />
     
     <Message Text="&gt;-- TraceGlobalVars - Complete"    Importance="high" />
   </Target>
