@@ -16,7 +16,7 @@
 
   <Target Name="Publish">
     <CallTarget Targets="Build"/>
-    <CallTarget Condition="'$(PublishToLocalNugetFeed)' == 'true'" Targets="PusblishToLocalFeed" />
+    <CallTarget Condition="'$(PublishToLocalNugetFeed)' == 'true'" Targets="NugetPublishToLocalFeed" />
   </Target>
   
   <Target Name="GetNativeManifest" />
@@ -24,10 +24,9 @@
   <Target Name="AfterBuild" AfterTargets="Build" />
 
 
-  <Target Name="CopyCustomFilesToNugetPackageStructure">
+  <!--<Target Name="CopyCustomFilesToNugetPackageStructure">
 
     <ItemGroup>
-
       <tools Include="$(MSBuildProjectDirectory)\..\Framework\testFramework\**\*.*">
         <targetFolder>testFramework</targetFolder>
       </tools>
@@ -36,7 +35,7 @@
         <targetFolder>.build</targetFolder>
       </content>
       
-      <!-- templates, extensions, src -->
+      --><!-- templates, extensions, src --><!--
       <content     Include="$(MSBuildProjectDirectory)\..\Framework\extensions\**\*.*">
         <targetFolder>extensions</targetFolder>
       </content>
@@ -56,18 +55,7 @@
           DestinationFolder="$(NugetStage)\content\%(content.targetFolder)\%(content.RecursiveDir)"
           OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
     
-  </Target>
-  
-  <!-- Publish.targets-->
-  <Target Name="PusblishToLocalFeed">
-    <ItemGroup>
-      <nupkg Include="$(NugkgReleaseFolder)**\*.nupkg"/>
-    </ItemGroup>
-    
-    <Copy SourceFiles="@(nupkg)"
-          DestinationFolder="$(NugkgPublishFolder)%(nupkg.RecursiveDir)"
-          OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
-  </Target>
+  </Target>-->
   
   
 </Project>

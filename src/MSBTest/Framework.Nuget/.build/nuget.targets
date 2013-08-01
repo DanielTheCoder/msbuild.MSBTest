@@ -8,7 +8,6 @@
     <BuildTargets>
       NugetCleanupFolderStructure;
       NugetCreateFolderStructure;
-      CopyCustomFilesToNugetPackageStructure;
       NugetCopyAdditionalFiles;
       NugetCopyNuspec;
       NugetCreatePackage;
@@ -29,16 +28,16 @@
 
   <Target Name="NugetCopyAdditionalFiles">
     <ItemGroup>
-      <additionalFiles Include="$(MSBuildProjectDirectory)\tools_additional\**\*.*">
+      <additionalFiles Include="$(MSBuildProjectDirectory)\tools\**\*.*">
         <targetFolder>tools</targetFolder>
       </additionalFiles>
-      <additionalFiles Include="$(MSBuildProjectDirectory)\content_additional\**\*.*">
+      <additionalFiles Include="$(MSBuildProjectDirectory)\content\**\*.*">
         <targetFolder>content</targetFolder>
       </additionalFiles>
-      <additionalFiles Include="$(MSBuildProjectDirectory)\build_additional\**\*.*">
+      <additionalFiles Include="$(MSBuildProjectDirectory)\build\**\*.*">
         <targetFolder>build</targetFolder>
       </additionalFiles>
-      <additionalFiles Include="$(MSBuildProjectDirectory)\lib_additional\**\*.*">
+      <additionalFiles Include="$(MSBuildProjectDirectory)\lib\**\*.*">
         <targetFolder>lib</targetFolder>
       </additionalFiles>
     </ItemGroup>
@@ -81,6 +80,16 @@
     <Message Text="  %(nuspecStaged.Identity)  Count: @(nuspecStaged->Count())" Importance="normal" />
     <Message Text="nuget pack %(nuspecStaged.Identity) -OutputDirectory $(NugkgReleaseFolder) -NoDefaultExcludes" Importance="normal" />
     <Exec Command="nuget pack %(nuspecStaged.Identity) -OutputDirectory $(NugkgReleaseFolder) -NoDefaultExcludes" />
+  </Target>
+
+  <Target Name="NugetPublishToLocalFeed">
+    <ItemGroup>
+      <nupkg Include="$(NugkgReleaseFolder)**\*.nupkg"/>
+    </ItemGroup>
+
+    <Copy SourceFiles="@(nupkg)"
+          DestinationFolder="$(NugkgPublishFolder)%(nupkg.RecursiveDir)"
+          OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
   </Target>
   
 </Project>

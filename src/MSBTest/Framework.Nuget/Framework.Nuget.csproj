@@ -14,17 +14,16 @@
   <ItemGroup>
     <Compile Include=".build\build.configuration.targets" />
     <Compile Include=".build\build.targets" />
-    <None Include="tools_additional\MSBTest.NuGet.template.proj" />
+    <None Include="tools\MSBTest.NuGet.template.proj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include=".build\nuget.targets" />
     <None Include="Framework.nuspec" />
-    <None Include="tools_additional\Install.ps1" />
+    <None Include="tools\Install.ps1" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include=".gitignore" />
-    <Content Include="content_additional\readme.txt" />
+    <Content Include="content\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildProjectDirectory)\.build\build.configuration.targets" />
   <Import Project="$(MSBuildProjectDirectory)\.build\build.targets" />

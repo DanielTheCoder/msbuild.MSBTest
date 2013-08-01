@@ -4,5 +4,26 @@
     <PublishToLocalNugetFeed>true</PublishToLocalNugetFeed>
     <NugkgPublishFolder>C:\Dev\_nuget\</NugkgPublishFolder>
   </PropertyGroup>
+
+  <ItemGroup>
+    <additionalFiles Include="$(MSBuildProjectDirectory)\..\Framework\testFramework\**\*.*">
+      <targetFolder>tools/testFramework</targetFolder>
+    </additionalFiles>
+
+    <additionalFiles Include="$(MSBuildProjectDirectory)\..\Framework\build\**\*.*">
+      <targetFolder>content/.build</targetFolder>
+    </additionalFiles>
+
+    <!-- templates, extensions, src -->
+    <additionalFiles     Include="$(MSBuildProjectDirectory)\..\Framework\extensions\**\*.*">
+      <targetFolder>content/extensions</targetFolder>
+    </additionalFiles>
+    <additionalFiles     Include="$(MSBuildProjectDirectory)\..\Framework\src\**\*.*">
+      <targetFolder>content/src</targetFolder>
+    </additionalFiles>
+    <additionalFiles     Include="$(MSBuildProjectDirectory)\..\Framework\tests\**\*.*">
+      <targetFolder>content/tests</targetFolder>
+    </additionalFiles>
+  </ItemGroup>
   
 </Project>
