@@ -10,24 +10,25 @@
     <ExtensionsRoot>$(RootDir)extensions\</ExtensionsRoot>
     <ExtensionsTasks>$(ExtensionsRoot)Tasks\</ExtensionsTasks>
     <ExtensionsImports>$(ExtensionsRoot)imports.targets</ExtensionsImports>
-    
-    <SourceRoot>$(RootDir)src\</SourceRoot>
-    <TestsRoot>$(RootDir)tests\</TestsRoot>
+
+    <SourceRoot Condition="'$(SourceRoot)'==''">$(RootDir)src\</SourceRoot>
+    <SourceImports Condition="'$(SourceImports)'==''">$(SourceRoot)imports.targets</SourceImports>
+    <TestsRoot  Condition="'$(TestsRoot)'==''">$(RootDir)tests\</TestsRoot>
 
   </PropertyGroup>
 
   <!-- Find all tests -->
   <ItemGroup Label="Testlist">
-    <Tests Include="$(TestsRoot)\**\Test.targets" />
-    <Tests Include="$(TestsRoot)\**\*.Test.targets" />
-    <Tests Include="$(TestsRoot)\**\Test.proj" />
-    <Tests Include="$(TestsRoot)\**\*.Test.proj" />
+    <Tests Include="$(TestsRoot)**\Test.targets" />
+    <Tests Include="$(TestsRoot)**\*.Test.targets" />
+    <Tests Include="$(TestsRoot)**\Test.proj" />
+    <Tests Include="$(TestsRoot)**\*.Test.proj" />
   </ItemGroup>
 
   <PropertyGroup>
     <TestCount>@(Tests->Count())</TestCount>
-    <TestList>$(Tests)</TestList>
-    <TestList>$(TestList.Replace(";", Environment.NewLine + " -"))</TestList>
+    <!--<TestList> %(Tests.Identity) </TestList>
+    <TestListFormatted>$(TestList.Replace(";", Environment.NewLine + " -"))</TestListFormatted>-->
   </PropertyGroup>
   
   <!-- Tracing Settings-->

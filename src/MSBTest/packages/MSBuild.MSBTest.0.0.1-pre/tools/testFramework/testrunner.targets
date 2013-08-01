@@ -29,8 +29,13 @@
 
   <Target Name ="_RunTest">
 
+    <PropertyGroup>
+      <_testName>$(Test.Replace('$(TestsRoot)', ''))</_testName>
+    </PropertyGroup>
+    
     <Message Text="&gt;------------------------------------------------------------------------------------" Importance="high" />
-    <Message Text="&gt;---- Test: $(Test) -------------------------" Importance="high" />
+    <Message Text="&gt;---- Test: $(_testName) -------------------------" Importance="high" />
+    <Message Text="&gt;---- Path: '$(Test)' ---------" Importance="normal" />
     <Message Text="&gt;------------------------------------------------------------------------------------" Importance="high" />
 
     <PropertyGroup>
