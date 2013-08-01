@@ -2,7 +2,7 @@
 
   <Target Name="Build">
     <CallTarget Targets="CleanNugetFolderStructure;CopyFrameworkFilesToNugetPackageStructure" />
-    <Exec Command="nuget pack Framework.nuspec" />
+    <Exec Command="nuget pack Framework.nuspec -OutputDirectory ../Releases" />
   </Target>
   
   <Target Name="Clean">
