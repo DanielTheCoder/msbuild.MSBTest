@@ -31,7 +31,9 @@
       <projectFiles       Include="$(MSBuildProjectDirectory)\..\Framework\build\**\*.*" />
       
       <!-- templates -->
-      <extensionFiles     Include="$(MSBuildProjectDirectory)\..\Framework\extensions\**\*.*" />
+      <extensionFiles     Include="$(MSBuildProjectDirectory)\..\Framework\extensions\**\*.*">
+        <targetFolder>extensions</targetFolder>
+      </extensionFiles>
       <srcFiles           Include="$(MSBuildProjectDirectory)\..\Framework\src\**\*.*" />
       <testsFiles         Include="$(MSBuildProjectDirectory)\..\Framework\tests\**\*.*" />
     </ItemGroup>
@@ -44,9 +46,9 @@
           DestinationFolder="$(MSBuildProjectDirectory)\tools\build\%(projectFiles.RecursiveDir)"
           OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
 
-    <Copy SourceFiles="@(projectFiles)"
-          DestinationFolder="$(MSBuildProjectDirectory)\content\.build\%(projectFiles.RecursiveDir)"
-          OverwriteReadOnlyFiles="true" ContinueOnError="true"/>
+    <!--<Copy SourceFiles="@(extensionFiles)"
+          DestinationFolder="$(MSBuildProjectDirectory)\content\%(projectFiles.targetFolder)\%(projectFiles.RecursiveDir)"
+          OverwriteReadOnlyFiles="true" ContinueOnError="true"/>-->
   </Target>
   
   <!-- Publish.targets-->

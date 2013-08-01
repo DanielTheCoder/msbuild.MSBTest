@@ -28,7 +28,7 @@
     <Message Text=" " Importance="high" />
 
     <Message Text="%09TestCount:  $(TestCount)" Importance="high"  />
-    <Message Text="%09TestList:  @(Tests)" Importance="high"  />
+    <Message Text="%09TestList:  @(Tests)" Importance="normal"  />
     
     <Message Text="&gt;-- TraceGlobalVars - Complete"    Importance="high" />
   </Target>
