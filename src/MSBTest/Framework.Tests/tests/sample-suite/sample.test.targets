@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  
+  <Import Project="$(TestsRoot)test.import"/>
+
+  <Target Name="Assert">
+    <Message Text="working fine" Importance="high" />
+  </Target>
+  
+</Project>
