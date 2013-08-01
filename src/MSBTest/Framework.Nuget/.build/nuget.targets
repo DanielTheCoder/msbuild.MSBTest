@@ -1,0 +1,35 @@
+﻿<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+
+  <Target Name="NugetCreateFolderStructure">
+    <!-- Ensure nuget Folder structure exists -->
+    <MakeDir Directories="$(MSBuildProjectDirectory)\lib" />
+    <MakeDir Directories="$(MSBuildProjectDirectory)\tools" />
+    <MakeDir Directories="$(MSBuildProjectDirectory)\content" />
+    <MakeDir Directories="$(MSBuildProjectDirectory)\build" />
+  </Target>
+
+  <Target Name="NugetCleanupFolderStructure">
+
+    <ItemGroup>
+      <files Include="$(MSBuildProjectDirectory)\tools\**\*.*"/>
+      <files Include="$(MSBuildProjectDirectory)\lib\**\*.*"/>
+      <files Include="$(MSBuildProjectDirectory)\content\**\*.*"/>
+      <files Include="$(MSBuildProjectDirectory)\build\**\*.*"/>
+      <folders Include="%(files.RelativeDir)" />
+    </ItemGroup>
+
+    <Message Text="@(files)" />
+    <Message Text="@(folders)" />
+
+    <Delete Files="@(files)" />
+    <RemoveDir Directories="@(folders)" ContinueOnError="true" />
+  </Target>
+
+  <Target Name="CreateNugetPackages" >
+    <Message Text="nuspec: @(nuspec)" />
+    <Message Text="  %(nuspec.Identity)  Count: @(nuspec->Count())" />
+    <Message Text="nuget pack %(nuspec.Identity) -OutputDirectory $(NugkgReleaseFolder)" Importance="normal" />
+    <Exec Command="nuget pack %(nuspec.Identity) -OutputDirectory $(NugkgReleaseFolder)" />
+  </Target>
+  
+</Project>

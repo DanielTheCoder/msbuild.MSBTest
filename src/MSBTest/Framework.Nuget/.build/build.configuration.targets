@@ -1,6 +1,8 @@
 ﻿<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
- 
-  
-  
+
+  <PropertyGroup>
+    <PublishToLocalNugetFeed>true</PublishToLocalNugetFeed>
+    <NugkgPublishFolder>C:\Dev\_nuget\</NugkgPublishFolder>
+  </PropertyGroup>
   
 </Project>
