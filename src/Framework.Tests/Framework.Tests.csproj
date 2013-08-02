@@ -17,7 +17,7 @@
     <TestrunnerImport Condition=" '$(TestrunnerImport)'=='' ">$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\..\packages\MSBuild.MSBTest.0.0.10-pre\tools\testFramework\testrunner.targets ))</TestrunnerImport>
   </PropertyGroup>
   <ItemGroup>
-    <None Include=".build\build.configuration.targets" />
+    <None Include=".build\build.props" />
     <None Include=".build\build.targets" />
     <None Include=".build\MSBTest.props" />
     <None Include=".build\MSBTest.targets" />

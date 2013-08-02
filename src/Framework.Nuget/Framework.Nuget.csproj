@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include=".build\build.configuration.targets" />
+    <None Include=".build\build.props" />
     <Compile Include=".build\build.targets" />
     <None Include="Framework.samples.nuspec" />
     <None Include="Framework\tools\MSBTest.NuGet.template.proj" />
