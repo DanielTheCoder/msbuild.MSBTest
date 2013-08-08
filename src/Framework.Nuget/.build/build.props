@@ -3,6 +3,8 @@
   <PropertyGroup>
     <PublishToLocalNugetFeed>true</PublishToLocalNugetFeed>
     <NugkgPublishFolder>C:\Dev\_nuget\</NugkgPublishFolder>
+    <NugkgPublishFolder Condition="'$(NugkgPublishFolder)'==''">$(MSBuildProjectDirectory)\..\..\Publish\</NugkgPublishFolder>
+    <NugkgReleaseFolder Condition="'$(NugkgReleaseFolder)'==''">$(MSBuildProjectDirectory)\..\..\Releases\</NugkgReleaseFolder>
   </PropertyGroup>
 
   <ItemGroup>
