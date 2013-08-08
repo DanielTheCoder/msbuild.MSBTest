@@ -1,7 +1,9 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0"  >
 
+  
   <Import Project="$(MSBuildProjectDirectory)\build\MSBTest.targets" />
 
+  <!--ToDo [2013.08.08, ds] Run All Targets using MSBuild for Nuget Package Restore Compatibility! -->  
   <!--<Target Name="Build" />
   <Target Name="Clean" />
   <Target Name="Rebuild" />

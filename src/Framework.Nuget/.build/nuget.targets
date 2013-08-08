@@ -7,7 +7,11 @@
     <NugkgPublishFolder Condition="'$(NugkgPublishFolder)'==''">$(MSBuildProjectDirectory)\bin\$(Configuration)\Publish\</NugkgPublishFolder>
     <NugkgReleaseFolder Condition="'$(NugkgReleaseFolder)'==''">$(MSBuildProjectDirectory)\bin\$(Configuration)\</NugkgReleaseFolder>
     
+    <!-- Convention based for Nuget Package Restore -->
+    <BuildDependsOn/>
+    
     <BuildTargets>
+      $(BuildDependsOn);
       NugetCleanupFolderStructure;
       NugetCreateFolderStructure;
       NugetCopyAdditionalFiles;

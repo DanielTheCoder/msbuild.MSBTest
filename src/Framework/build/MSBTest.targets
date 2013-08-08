@@ -3,28 +3,51 @@
   <PropertyGroup Condition="'$(TestrunnerImport)'==''">
     <TestrunnerImport Condition="!Exists('$(TestrunnerImport)')">$(MSBuildThisFileDirectory)..\testFramework\testrunner.targets</TestrunnerImport>
   </PropertyGroup>
-  <Import Project="$(TestrunnerImport)" />
+
+  <PropertyGroup>
+    <!-- Convention based for Nuget Package Restore -->
+    <BuildDependsOn/>
+    
+    <BuildTargets>
+      $(BuildDependsOn);
+      RunTests;
+    </BuildTargets>
+    
+    <CleanTargets>
+      CleanTests;
+    </CleanTargets>
+    
+    <RebuildTargets>
+      Clean;
+      Build;
+    </RebuildTargets>
+
+    <PublishTargets>
+      Build;
+    </PublishTargets>
+    
+  </PropertyGroup>
+
+  <Import Condition="Exists('$(TestrunnerImport)')" Project="$(TestrunnerImport)" />
 
   <Target Name="Build">
-    <CallTarget Targets="RunTests" />
+    <CallTarget Targets="$(BuildTargets)" />
   </Target>
 
   <Target Name="Clean" >
-    <CallTarget Targets="CleanTests" />
+    <CallTarget Targets="$(CleanTargets)" />
   </Target>
-  
+
   <Target Name="Rebuild" >
-    <CallTarget Targets="Clean; Build" />
+    <CallTarget Targets="$(RebuildTargets)" />
   </Target>
   
   <Target Name="Publish">
-    <CallTarget Targets="Build" />
+    <CallTarget Targets="$(PublishTargets)" />
   </Target>
 
   <Target Name="GetNativeManifest" />
   <Target Name="GetCopyToOutputDirectoryItems" />
-
-  
   <Target Name="AfterBuild" AfterTargets="Build" />
 
 </Project>
