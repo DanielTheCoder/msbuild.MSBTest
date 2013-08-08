@@ -31,7 +31,7 @@
     <Content Include="MSBTest.readme.samples.txt" />
     <Content Include="readme.txt" />
   </ItemGroup>
-  <Import Project="$(MSBuildProjectDirectory)\.build\build.configuration.targets" />
+  <Import Project="$(MSBuildProjectDirectory)\.build\build.props" />
   <Import Project="$(MSBuildProjectDirectory)\.build\build.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>

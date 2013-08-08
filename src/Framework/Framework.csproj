@@ -52,7 +52,7 @@
     <None Include="tests\test.import" />
   </ItemGroup>
   <ItemGroup />
-  <Import Project="$(MSBuildProjectDirectory)\.build\build.configuration.targets" />
+  <Import Project="$(MSBuildProjectDirectory)\.build\build.props" />
   <Import Project="$(MSBuildProjectDirectory)\.build\build.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
