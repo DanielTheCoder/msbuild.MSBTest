@@ -16,12 +16,14 @@
       <SubType>Designer</SubType>
     </None>
     <Compile Include=".build\build.targets" />
-    <None Include="Framework.samples.nuspec" />
+    <None Include="Framework.samples\Framework.samples.nuspec" />
     <None Include="Framework\tools\MSBTest.NuGet.template.proj" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include=".build\nuget.targets" />
-    <None Include="Framework.nuspec" />
+    <Compile Include=".build\nuget.targets">
+      <SubType>Designer</SubType>
+    </Compile>
+    <None Include="Framework\Framework.nuspec" />
     <None Include="Framework\tools\Install.ps1" />
   </ItemGroup>
   <ItemGroup />
