@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <nuspec Include="$(MSBuildProjectDirectory)\*.nuspec"/>
+    <nuspec Include="$(MSBuildProjectDirectory)\**\*.nuspec"/>
   </ItemGroup>
 
 
