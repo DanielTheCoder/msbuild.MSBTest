@@ -24,14 +24,32 @@
     <nuspec Include="$(MSBuildProjectDirectory)\**\*.nuspec"/>
   </ItemGroup>
 
+  
+  
+  
+  <Target Name="NugetBuild">
+    <CallTarget Targets="NugetCreatePackages" />
+  </Target>
 
-  <Target Name="NugetCreatePackages">
-    <CallTarget Targets="$(BuildTargets)" />
+  <Target Name="NugetClean">
+    <CallTarget Targets="NugetCleanupFolderStructure" />
+  </Target>
+
+  <Target Name="NugetRebuild">
+    <CallTarget Targets="Build" />
+  </Target>
+
+  <Target Name="NugetPublish">
+    <CallTarget Targets="Build"/>
+    <CallTarget Condition="'$(PublishToLocalNugetFeed)' == 'true'" Targets="NugetPublishToLocalFeed" />
   </Target>
   
   
   
-  
+
+  <Target Name="NugetCreatePackages">
+    <CallTarget Targets="$(BuildTargets)" />
+  </Target>
   
   <Target Name="NugetCreateFolderStructure">
     <!-- Ensure nuget Folder structure exists -->

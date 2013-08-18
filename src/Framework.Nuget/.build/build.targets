@@ -3,24 +3,19 @@
   <Import Project="nuget.targets"/>
   
   <Target Name="Build">
-    <CallTarget Targets="NugetCreatePackages" />
+    <CallTarget Targets="NugetBuild" />
   </Target>
 
   <Target Name="Clean">
-    <CallTarget Targets="NugetCleanupFolderStructure" />
+    <CallTarget Targets="NugetClean" />
   </Target>
 
   <Target Name="Rebuild">
-    <CallTarget Targets="Build" />
+    <CallTarget Targets="NugetRebuild" />
   </Target>
 
   <Target Name="Publish">
-    <CallTarget Targets="Build"/>
-    <CallTarget Condition="'$(PublishToLocalNugetFeed)' == 'true'" Targets="NugetPublishToLocalFeed" />
+    <CallTarget Targets="NugetPublish"/>
   </Target>
-  
-  <Target Name="GetNativeManifest" />
-  <Target Name="GetCopyToOutputDirectoryItems" />
-  <Target Name="AfterBuild" AfterTargets="Build" />
   
 </Project>
