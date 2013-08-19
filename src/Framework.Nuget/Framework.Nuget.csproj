@@ -18,7 +18,6 @@
       <SubType>Designer</SubType>
     </None>
     <Compile Include=".build\build.targets" />
-    <None Include=".build\nuget.targets" />
     <None Include="Framework.samples\Framework.samples.nuspec" />
     <None Include="Framework\tools\MSBTest.NuGet.template.proj" />
     <None Include="packages.config" />
@@ -35,4 +34,5 @@
   <Import Project="$(MSBuildProjectDirectory)\.build\build.props" />
   <Import Project="$(MSBuildProjectDirectory)\.build\build.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="..\packages\MSBuild.MSBNuget.1.0.2-pre\build\MSBuild.MSBNuget.targets" Condition="Exists('..\packages\MSBuild.MSBNuget.1.0.2-pre\build\MSBuild.MSBNuget.targets')" />
 </Project>
