@@ -10,19 +10,20 @@
     <RootNamespace>Framework.Nuget</RootNamespace>
     <AssemblyName>Framework.Nuget</AssemblyName>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <ItemGroup>
     <None Include=".build\build.props">
       <SubType>Designer</SubType>
     </None>
     <Compile Include=".build\build.targets" />
+    <None Include=".build\nuget.targets" />
     <None Include="Framework.samples\Framework.samples.nuspec" />
     <None Include="Framework\tools\MSBTest.NuGet.template.proj" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include=".build\nuget.targets">
-      <SubType>Designer</SubType>
-    </Compile>
     <None Include="Framework\Framework.nuspec" />
     <None Include="Framework\tools\Install.ps1" />
   </ItemGroup>
@@ -33,4 +34,5 @@
   </ItemGroup>
   <Import Project="$(MSBuildProjectDirectory)\.build\build.props" />
   <Import Project="$(MSBuildProjectDirectory)\.build\build.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>
