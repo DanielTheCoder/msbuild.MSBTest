@@ -21,10 +21,4 @@
     <CallTarget Targets="Build" />
   </Target>
 
-  <Target Name="GetNativeManifest" />
-  <Target Name="GetCopyToOutputDirectoryItems" />
-
-  
-  <Target Name="AfterBuild" AfterTargets="Build" />
-
 </Project>
