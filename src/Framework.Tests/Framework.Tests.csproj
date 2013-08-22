@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0335F432-3F07-4723-B80C-7B077950E0E8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Framework.Tests</RootNamespace>
+    <AssemblyName>Framework.Tests</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include=".build\build.props" />
+    <None Include=".build\build.targets" />
+    <None Include=".build\MSBTest.props" />
+    <None Include="extensions\imports.targets" />
+    <None Include="packages.config" />
+    <None Include="src\imports.targets" />
+    <None Include="tests\sample-suite\sample.test.targets" />
+    <None Include="tests\test.import" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MSBTest.readme.samples.txt" />
+    <Content Include="readme\MSBTest.readme.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildProjectDirectory)\.build\build.props" />
+  <Import Project="$(MSBuildProjectDirectory)\.build\build.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="..\packages\MSBuild.MSBTest.0.0.12-pre\build\MSBuild.MSBTest.targets" Condition="Exists('..\packages\MSBuild.MSBTest.0.0.12-pre\build\MSBuild.MSBTest.targets')" />
+</Project>

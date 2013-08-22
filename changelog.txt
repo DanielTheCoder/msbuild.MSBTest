@@ -1,0 +1,13 @@
+0.0.12 -pre 2013/08/22
+Fixed issues:
+ + pack: invalid arguments. -> Escaped command
+
+Changes:
+ + Change to MSBuild.MSBuildConventions nuget package as default convention
+ + powershell Script and import labels are now obsolete and have to be cleaned manually
+
+
+1.0.0 - 2013/08/18 (Initial publish )
+Fixed issues:
+New Features:
+Changes:

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>MSBuild.MSBTest.Samples</id>
+    <version>0.0.12-pre</version>
+    <title>MSBuild Test Framework Samples structure</title>
+    <authors>Daniel Sack</authors>
+    <owners>Daniel Sack</owners>
+    <!--<licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
+    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
+    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Generates folder layout with samples for MSBTest.</description>
+    <releaseNotes>Initial version</releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <tags>MSBuild Test MSBTest</tags>
+    <dependencies>
+      <dependency id="MSBuild.MSBTest" />
+    </dependencies>
+  </metadata>
+  
+</package>

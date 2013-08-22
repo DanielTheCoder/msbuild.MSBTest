@@ -1,0 +1,40 @@
+﻿<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+
+  <PropertyGroup>
+    <PublishToLocalNugetFeed>true</PublishToLocalNugetFeed>
+    
+    <NugkgPublishReleaseFolder Condition="'$(NugkgPublishReleaseFolder)'==''">$(MSBuildProjectDirectory)\..\..\Releases\</NugkgPublishReleaseFolder>
+    <NugkgPublishLocalNugetFeedFolder Condition="'$(NugkgPublishLocalNugetFeedFolder)'==''">C:\Dev\_galleries\nuget\</NugkgPublishLocalNugetFeedFolder>
+  </PropertyGroup>
+
+  <ItemGroup Label="Framework">
+    <additionalFiles Include="$(MSBuildProjectDirectory)\..\Framework\testFramework\**\*.*">
+      <targetFolder>Framework/tools/testFramework</targetFolder>
+    </additionalFiles>
+
+    <additionalFiles Include="$(MSBuildProjectDirectory)\..\Framework\build\MSBuild.MSBTest.targets">
+      <targetFolder>Framework/build</targetFolder>
+    </additionalFiles>
+
+    <additionalFiles Include="$(MSBuildProjectDirectory)\..\Framework\build\MSBTest.props">
+      <targetFolder>Framework/content/.build</targetFolder>
+    </additionalFiles>
+    
+  </ItemGroup>
+
+  
+  
+  <ItemGroup Label="Framework.sample">
+    <!-- samples, templates, extensions, src -->
+    <additionalFiles     Include="$(MSBuildProjectDirectory)\..\Framework\extensions\**\*.*">
+      <targetFolder>Framework.samples/content/extensions</targetFolder>
+    </additionalFiles>
+    <additionalFiles     Include="$(MSBuildProjectDirectory)\..\Framework\src\**\*.*">
+      <targetFolder>Framework.samples/content/src</targetFolder>
+    </additionalFiles>
+    <additionalFiles     Include="$(MSBuildProjectDirectory)\..\Framework\tests\**\*.*">
+      <targetFolder>Framework.samples/content/tests</targetFolder>
+    </additionalFiles>
+  </ItemGroup>
+  
+</Project>
