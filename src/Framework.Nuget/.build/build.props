@@ -12,10 +12,14 @@
       <targetFolder>Framework/tools/testFramework</targetFolder>
     </additionalFiles>
 
-    <additionalFiles Include="$(MSBuildProjectDirectory)\..\Framework\build\**\*.*">
-      <targetFolder>Framework/content/.build</targetFolder>
+    <additionalFiles Include="$(MSBuildProjectDirectory)\..\Framework\build\MSBuild.MSBTest.targets">
+      <targetFolder>Framework/build</targetFolder>
     </additionalFiles>
 
+    <additionalFiles Include="$(MSBuildProjectDirectory)\..\Framework\build\MSBTest.props">
+      <targetFolder>Framework/content/.build</targetFolder>
+    </additionalFiles>
+    
   </ItemGroup>
 
   

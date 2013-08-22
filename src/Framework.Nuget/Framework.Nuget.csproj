@@ -19,17 +19,17 @@
     </None>
     <Compile Include=".build\build.targets" />
     <None Include="Framework.samples\Framework.samples.nuspec" />
-    <None Include="Framework\tools\MSBTest.NuGet.template.proj" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Framework\Framework.nuspec" />
-    <None Include="Framework\tools\Install.ps1" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Framework\tools\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Framework.samples\content\MSBTest.readme.samples.txt" />
-    <Content Include="Framework\content\readme.txt" />
+    <Content Include="Framework\content\readme\MSBTest.readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildProjectDirectory)\.build\build.props" />
   <Import Project="$(MSBuildProjectDirectory)\.build\build.targets" />
