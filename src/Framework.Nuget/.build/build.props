@@ -9,12 +9,10 @@
 
   <ItemGroup Label="Framework">
     <additionalFiles Include="$(MSBuildProjectDirectory)\..\Framework\testFramework\**\*.*">
-      <nuspec>Framework.nuspec</nuspec>
       <targetFolder>Framework/tools/testFramework</targetFolder>
     </additionalFiles>
 
     <additionalFiles Include="$(MSBuildProjectDirectory)\..\Framework\build\**\*.*">
-      <nuspec>Framework.nuspec</nuspec>
       <targetFolder>Framework/content/.build</targetFolder>
     </additionalFiles>
 
@@ -25,15 +23,12 @@
   <ItemGroup Label="Framework.sample">
     <!-- samples, templates, extensions, src -->
     <additionalFiles     Include="$(MSBuildProjectDirectory)\..\Framework\extensions\**\*.*">
-      <nuspec>Framework.Structure.nuspec</nuspec>
       <targetFolder>Framework.samples/content/extensions</targetFolder>
     </additionalFiles>
     <additionalFiles     Include="$(MSBuildProjectDirectory)\..\Framework\src\**\*.*">
-      <nuspec>Framework.Structure.nuspec</nuspec>
       <targetFolder>Framework.samples/content/src</targetFolder>
     </additionalFiles>
     <additionalFiles     Include="$(MSBuildProjectDirectory)\..\Framework\tests\**\*.*">
-      <nuspec>Framework.Structure.nuspec</nuspec>
       <targetFolder>Framework.samples/content/tests</targetFolder>
     </additionalFiles>
   </ItemGroup>
