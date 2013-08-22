@@ -7,7 +7,7 @@
     <NugkgPublishLocalNugetFeedFolder Condition="'$(NugkgPublishLocalNugetFeedFolder)'==''">C:\Dev\_galleries\nuget\</NugkgPublishLocalNugetFeedFolder>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Label="Framework">
     <additionalFiles Include="$(MSBuildProjectDirectory)\..\Framework\testFramework\**\*.*">
       <nuspec>Framework.nuspec</nuspec>
       <targetFolder>Framework/tools/testFramework</targetFolder>
@@ -18,6 +18,11 @@
       <targetFolder>Framework/content/.build</targetFolder>
     </additionalFiles>
 
+  </ItemGroup>
+
+  
+  
+  <ItemGroup Label="Framework.sample">
     <!-- samples, templates, extensions, src -->
     <additionalFiles     Include="$(MSBuildProjectDirectory)\..\Framework\extensions\**\*.*">
       <nuspec>Framework.Structure.nuspec</nuspec>
