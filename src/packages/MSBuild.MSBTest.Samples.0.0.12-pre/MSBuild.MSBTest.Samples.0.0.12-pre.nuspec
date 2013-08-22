@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>MSBuild.MSBTest.Samples</id>
-    <version>0.0.10-pre</version>
+    <version>0.0.12-pre</version>
     <title>MSBuild Test Framework Samples structure</title>
     <authors>Daniel Sack</authors>
     <owners>Daniel Sack</owners>

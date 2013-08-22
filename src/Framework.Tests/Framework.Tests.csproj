@@ -13,14 +13,10 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
-  <PropertyGroup Label="MSBTest">
-    <TestrunnerImport Condition=" '$(TestrunnerImport)'=='' ">$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\..\packages\MSBuild.MSBTest.0.0.10-pre\tools\testFramework\testrunner.targets ))</TestrunnerImport>
-  </PropertyGroup>
   <ItemGroup>
     <None Include=".build\build.props" />
     <None Include=".build\build.targets" />
     <None Include=".build\MSBTest.props" />
-    <None Include=".build\MSBTest.targets" />
     <None Include="extensions\imports.targets" />
     <None Include="packages.config" />
     <None Include="src\imports.targets" />
@@ -29,9 +25,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MSBTest.readme.samples.txt" />
-    <Content Include="readme.txt" />
+    <Content Include="readme\MSBTest.readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildProjectDirectory)\.build\build.props" />
   <Import Project="$(MSBuildProjectDirectory)\.build\build.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="..\packages\MSBuild.MSBTest.0.0.12-pre\build\MSBuild.MSBTest.targets" Condition="Exists('..\packages\MSBuild.MSBTest.0.0.12-pre\build\MSBuild.MSBTest.targets')" />
 </Project>
