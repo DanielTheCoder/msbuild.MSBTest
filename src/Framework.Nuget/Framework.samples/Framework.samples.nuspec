@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>MSBuild.MSBTest.Samples</id>
-    <version>0.0.11-pre</version>
+    <version>0.0.12-pre</version>
     <title>MSBuild Test Framework Samples structure</title>
     <authors>Daniel Sack</authors>
     <owners>Daniel Sack</owners>
