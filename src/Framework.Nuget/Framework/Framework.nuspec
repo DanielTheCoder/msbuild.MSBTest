@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>MSBuild.MSBTest</id>
-    <version>0.0.10-pre</version>
+    <version>0.0.11-pre</version>
     <title>MSBuild Test Framework</title>
     <authors>Daniel Sack</authors>
     <owners>Daniel Sack</owners>
