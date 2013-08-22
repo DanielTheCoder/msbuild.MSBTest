@@ -1,15 +1,29 @@
-﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0"  >
+﻿<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
 
+  <PropertyGroup>
+    <BuildTargets>$(BuildDependsOn);</BuildTargets>
+    <CleanTargets/>
+    <RebuildTargets/>
+    <PublishTargets/>
+  </PropertyGroup>
   
-  <Import Project="$(MSBuildProjectDirectory)\build\MSBTest.targets" />
+  <Target Name="Build">
+    <CallTarget Targets="$(BuildTargets)" />
+  </Target>
 
-  <!--ToDo [2013.08.08, ds] Run All Targets using MSBuild for Nuget Package Restore Compatibility! -->  
-  <!--<Target Name="Build" />
-  <Target Name="Clean" />
-  <Target Name="Rebuild" />
-  <Target Name="Publish"/>
-  <Target Name="GetNativeManifest" />
-  <Target Name="GetCopyToOutputDirectoryItems" />
-  <Target Name="AfterBuild" AfterTargets="Build" />-->
+  <Target Name="Clean">
+    <CallTarget Targets="$(CleanTargets)" />
+  </Target>
+
+  <Target Name="Rebuild">
+    <CallTarget Targets="$(RebuildTargets)" />
+  </Target>
+
+  <Target Name="Publish">
+    <CallTarget Targets="$(PublishTargets)"/>
+  </Target>
+
+  <Import Project="$(MSBuildProjectDirectory)\build\MSBTest.props" />
+  <Import Project="$(MSBuildProjectDirectory)\build\MSBuild.MSBTest.targets" />
 
 </Project>

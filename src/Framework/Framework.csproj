@@ -39,7 +39,7 @@
     <None Include=".build\build.props" />
     <None Include=".build\build.targets" />
     <None Include="build\MSBTest.props" />
-    <None Include="build\MSBTest.targets" />
+    <None Include="build\MSBuild.MSBTest.targets" />
     <None Include="extensions\imports.targets" />
     <None Include="packages.config" />
     <None Include="src\imports.targets" />
