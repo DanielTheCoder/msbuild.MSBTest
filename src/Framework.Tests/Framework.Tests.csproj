@@ -10,15 +10,12 @@
     <RootNamespace>Framework.Tests</RootNamespace>
     <AssemblyName>Framework.Tests</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <ItemGroup>
-    <None Include=".build\build.props" />
-    <None Include=".build\build.targets" />
-    <None Include=".build\MSBTest.props" />
+    <None Include="Properties\MSBTest.props" />
     <None Include="extensions\imports.targets" />
     <None Include="packages.config" />
+    <None Include="Properties\build.props" />
     <None Include="src\imports.targets" />
     <None Include="tests\sample-suite\sample.test.targets" />
     <None Include="tests\test.import" />
@@ -27,7 +24,6 @@
     <Content Include="MSBTest.readme.samples.txt" />
     <Content Include="readme\MSBTest.readme.txt" />
   </ItemGroup>
-  <Import Project="$(MSBuildProjectDirectory)\.build\build.props" />
-  <Import Project="$(MSBuildProjectDirectory)\.build\build.targets" />
+  <Import Project="..\packages\MSBuild.MSBBuildConvention.2.0.0\build\MSBuild.MSBBuildConvention.targets" Condition="Exists('..\packages\MSBuild.MSBBuildConvention.2.0.0\build\MSBuild.MSBBuildConvention.targets')" />
   <Import Project="..\packages\MSBuild.MSBTest.0.0.12-pre\build\MSBuild.MSBTest.targets" Condition="Exists('..\packages\MSBuild.MSBTest.0.0.12-pre\build\MSBuild.MSBTest.targets')" />
 </Project>

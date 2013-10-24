@@ -10,16 +10,11 @@
     <RootNamespace>Framework.Nuget</RootNamespace>
     <AssemblyName>Framework.Nuget</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <ItemGroup>
-    <None Include=".build\build.props">
-      <SubType>Designer</SubType>
-    </None>
-    <Compile Include=".build\build.targets" />
     <None Include="Framework.samples\Framework.samples.nuspec" />
     <None Include="packages.config" />
+    <None Include="Properties\build.props" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Framework\Framework.nuspec" />
@@ -31,7 +26,6 @@
     <Content Include="Framework.samples\content\MSBTest.readme.samples.txt" />
     <Content Include="Framework\content\readme\MSBTest.readme.txt" />
   </ItemGroup>
-  <Import Project="$(MSBuildProjectDirectory)\.build\build.props" />
-  <Import Project="$(MSBuildProjectDirectory)\.build\build.targets" />
-  <Import Project="..\packages\MSBuild.MSBNuget.1.0.3-pre\build\MSBuild.MSBNuget.targets" Condition="Exists('..\packages\MSBuild.MSBNuget.1.0.3-pre\build\MSBuild.MSBNuget.targets')" />
+  <Import Project="..\packages\MSBuild.MSBBuildConvention.2.0.0\build\MSBuild.MSBBuildConvention.targets" Condition="Exists('..\packages\MSBuild.MSBBuildConvention.2.0.0\build\MSBuild.MSBBuildConvention.targets')" />
+  <Import Project="..\packages\MSBuild.MSBNuget.1.1.1-pre1\build\MSBuild.MSBNuget.targets" Condition="Exists('..\packages\MSBuild.MSBNuget.1.1.1-pre1\build\MSBuild.MSBNuget.targets')" />
 </Project>

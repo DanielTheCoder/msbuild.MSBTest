@@ -1,10 +1,11 @@
 ﻿<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
 
+  <!-- put your build props here -->
   <PropertyGroup>
-    <PublishToLocalNugetFeed>true</PublishToLocalNugetFeed>
-    
-    <NugkgPublishReleaseFolder Condition="'$(NugkgPublishReleaseFolder)'==''">$(MSBuildProjectDirectory)\..\..\Releases\</NugkgPublishReleaseFolder>
-    <NugkgPublishLocalNugetFeedFolder Condition="'$(NugkgPublishLocalNugetFeedFolder)'==''">C:\Dev\_galleries\nuget\</NugkgPublishLocalNugetFeedFolder>
+    <NugetPublishToLocalNugetFeed>true</NugetPublishToLocalNugetFeed>
+
+    <NugetPublishReleaseFolder Condition="'$(NugetPublishReleaseFolder)'==''">$(MSBuildProjectDirectory)\..\..\Releases\</NugetPublishReleaseFolder>
+    <NugetPublishLocalNugetFeedFolder Condition="'$(NugetPublishReleaseFolder)'==''">C:\Dev\_galleries\nuget\</NugetPublishLocalNugetFeedFolder>
   </PropertyGroup>
 
   <ItemGroup Label="Framework">
@@ -19,11 +20,11 @@
     <additionalFiles Include="$(MSBuildProjectDirectory)\..\Framework\build\MSBTest.props">
       <targetFolder>Framework/content/.build</targetFolder>
     </additionalFiles>
-    
+
   </ItemGroup>
 
-  
-  
+
+
   <ItemGroup Label="Framework.sample">
     <!-- samples, templates, extensions, src -->
     <additionalFiles     Include="$(MSBuildProjectDirectory)\..\Framework\extensions\**\*.*">

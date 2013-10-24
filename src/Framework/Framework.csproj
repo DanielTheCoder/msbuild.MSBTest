@@ -11,8 +11,6 @@
     <AssemblyName>Framework</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,12 +33,11 @@
     <Compile Include="IntellisenseHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include=".build\build.props" />
-    <None Include=".build\build.targets" />
     <None Include="build\MSBTest.props" />
     <None Include="build\MSBuild.MSBTest.targets" />
     <None Include="extensions\imports.targets" />
     <None Include="packages.config" />
+    <None Include="Properties\build.props" />
     <None Include="src\imports.targets" />
     <None Include="testFramework\targets\Tasks.targets" />
     <None Include="testFramework\tasks\FileAssert.targets" />
@@ -54,8 +51,7 @@
     <None Include="tests\test.import" />
   </ItemGroup>
   <ItemGroup />
-  <Import Project="$(MSBuildProjectDirectory)\.build\build.props" />
-  <Import Project="$(MSBuildProjectDirectory)\.build\build.targets" />
+  <Import Project="..\packages\MSBuild.MSBBuildConvention.2.0.0\build\MSBuild.MSBBuildConvention.targets" Condition="Exists('..\packages\MSBuild.MSBBuildConvention.2.0.0\build\MSBuild.MSBBuildConvention.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
