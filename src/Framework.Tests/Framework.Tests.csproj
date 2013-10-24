@@ -29,6 +29,5 @@
   </ItemGroup>
   <Import Project="$(MSBuildProjectDirectory)\.build\build.props" />
   <Import Project="$(MSBuildProjectDirectory)\.build\build.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\packages\MSBuild.MSBTest.0.0.12-pre\build\MSBuild.MSBTest.targets" Condition="Exists('..\packages\MSBuild.MSBTest.0.0.12-pre\build\MSBuild.MSBTest.targets')" />
 </Project>
