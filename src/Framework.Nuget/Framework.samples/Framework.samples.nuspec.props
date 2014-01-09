@@ -1,0 +1,16 @@
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+
+  <ItemGroup Label="Framework.sample">
+    <!-- samples, templates, extensions, src -->
+    <additionalFiles     Include="$(MSBuildProjectDirectory)\..\Framework\extensions\**\*.*">
+      <targetFolder>Framework.samples/content/extensions</targetFolder>
+    </additionalFiles>
+    <additionalFiles     Include="$(MSBuildProjectDirectory)\..\Framework\src\**\*.*">
+      <targetFolder>Framework.samples/content/src</targetFolder>
+    </additionalFiles>
+    <additionalFiles     Include="$(MSBuildProjectDirectory)\..\Framework\tests\**\*.*">
+      <targetFolder>Framework.samples/content/tests</targetFolder>
+    </additionalFiles>
+  </ItemGroup>
+
+</Project>

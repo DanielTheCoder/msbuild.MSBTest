@@ -12,7 +12,9 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="Framework.samples\Framework.samples.nuspec.props" />
     <None Include="Framework.samples\Framework.samples.nuspec" />
+    <None Include="Framework\Framework.nuspec.props" />
     <None Include="packages.config" />
     <None Include="Properties\build.props" />
   </ItemGroup>
@@ -20,7 +22,8 @@
     <None Include="Framework\Framework.nuspec" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Framework\tools\" />
+    <Folder Include="Framework\build\" />
+    <Folder Include="Framework\content\Properties\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Framework.samples\content\MSBTest.readme.samples.txt" />

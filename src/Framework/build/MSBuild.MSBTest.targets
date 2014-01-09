@@ -2,7 +2,7 @@
 
   <PropertyGroup Condition="'$(TestrunnerImport)'==''">
     <!-- nuget path -->
-    <TestrunnerImport Condition="!Exists('$(TestrunnerImport)')">$(MSBuildThisFileDirectory)..\tools\testFramework\testrunner.targets</TestrunnerImport>
+    <TestrunnerImport Condition="!Exists('$(TestrunnerImport)')">$(MSBuildThisFileDirectory)testFramework\testrunner.targets</TestrunnerImport>
     <!-- development path -->
     <TestrunnerImport Condition="!Exists('$(TestrunnerImport)')">$(MSBuildThisFileDirectory)..\testFramework\testrunner.targets</TestrunnerImport>
   </PropertyGroup>
