@@ -1,13 +1,5 @@
 ﻿<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
 
-  <!-- put your build props here -->
-  <PropertyGroup>
-    <NugetPublishToLocalNugetFeed>true</NugetPublishToLocalNugetFeed>
-
-    <NugetPublishReleaseFolder Condition="'$(NugetPublishReleaseFolder)'==''">$(MSBuildProjectDirectory)\..\..\Releases\</NugetPublishReleaseFolder>
-    <NugetPublishLocalNugetFeedFolder Condition="'$(NugetPublishReleaseFolder)'==''">C:\Dev\_galleries\nuget\</NugetPublishLocalNugetFeedFolder>
-  </PropertyGroup>
-
-  <Import Project="$(MSBuildProjectDirectory)\*\*.nuspec.props"/>
+  <Import Project="MSBNuget.props"/>
   
 </Project>

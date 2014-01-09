@@ -1,0 +1,12 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+
+  <!-- MSBuild.MSBNuget MSBuild properties with 'noe.Core.NugetPackages' default values -->
+  <PropertyGroup Label="MSBuild.MSBNuget Default values">
+    <NugetPublishToReleaseFolder Condition="'$(NugetPublishToReleaseFolder)'==''">false</NugetPublishToReleaseFolder>
+    <NugetPublishToLocalNugetFeed Condition="'$(NugetPublishToLocalNugetFeed)'==''">false</NugetPublishToLocalNugetFeed>
+
+    <NugetPublishLocalNugetFeedFolder Condition="'$(NugetPublishLocalNugetFeedFolder)'==''">$(MSBuildProjectDirectory)\..\..\Publish\</NugetPublishLocalNugetFeedFolder>
+    <NugetPublishReleaseFolder Condition="'$(NugetPublishReleaseFolder)'==''">$(MSBuildProjectDirectory)\..\..\Releases\</NugetPublishReleaseFolder>
+  </PropertyGroup>
+  
+</Project>

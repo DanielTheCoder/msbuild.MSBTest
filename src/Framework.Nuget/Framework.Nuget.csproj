@@ -12,6 +12,10 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="Properties\Configurations\MSBNuget.default.props" />
+    <None Include="Properties\Configurations\MSBNuget.TTV-DS06.props" />
+    <None Include="Properties\Configurations\MSBNuget.TTV-DS07.props" />
+    <None Include="Properties\MSBNuget.props" />
     <None Include="Framework.samples\Framework.samples.nuspec.props" />
     <None Include="Framework.samples\Framework.samples.nuspec" />
     <None Include="Framework\Framework.nuspec.props" />

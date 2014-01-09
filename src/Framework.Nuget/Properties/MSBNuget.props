@@ -1,0 +1,19 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+
+  <PropertyGroup>
+    <!-- overwrite nuget.exe path because we are not acting in scope of packages folder -->
+    <NuGetToolsPath>$(MSBuildProjectDirectory)\..\packages\NuGet.CommandLine.*\tools\</NuGetToolsPath>
+
+    <NugetPackagesCustomConfiguration Condition="'$(NugetPackagesCustomConfiguration)'==''">$(COMPUTERNAME)</NugetPackagesCustomConfiguration>
+
+    <_nugetPackagesCustomConfigurationImportPath>$(MSBuildThisFileDirectory)Configurations\MSBNuget.$(NugetPackagesCustomConfiguration).props</_nugetPackagesCustomConfigurationImportPath>
+    <_nugetPackagesCustomConfigurationImportPath Condition="Exists('$(_nugetPackagesCustomConfigurationImportPath)')=='false'">$(MSBuildThisFileDirectory)Configurations\MSBNuget.default.props</_nugetPackagesCustomConfigurationImportPath>
+
+    <NugetFilterOnlyConventionWellKnownFolders>false</NugetFilterOnlyConventionWellKnownFolders>
+  </PropertyGroup>
+  
+  <Import Project="$(_nugetPackagesCustomConfigurationImportPath)" Condition="Exists('$(_nugetPackagesCustomConfigurationImportPath)')=='true'"/>
+  
+  <Import Project="$(MSBuildProjectDirectory)\*\*.nuspec.props"/>
+  
+</Project>
