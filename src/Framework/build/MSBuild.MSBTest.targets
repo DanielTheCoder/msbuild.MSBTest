@@ -8,7 +8,11 @@
   </PropertyGroup>
 
   <Import Condition="Exists('$(TestrunnerImport)')" Project="$(TestrunnerImport)" />
-  
+
+  <!-- Import custom global build.props from C# Properties folder-->
+  <Import Project="$(MSBuildProjectDirectory)\Properties\MSBTest.props" Condition="Exists('$(MSBuildProjectDirectory)\Properties\MSBTest.props')=='true'" />
+
+
   <PropertyGroup>
     <BuildTargets>
       CleanTests;

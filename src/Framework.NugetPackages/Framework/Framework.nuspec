@@ -2,8 +2,8 @@
 <package >
   <metadata>
     <id>MSBuild.MSBTest</id>
-    <version>0.0.13-pre02</version>
-    <title>MSBuild Test Framework</title>
+    <version>0.0.15-pre01</version>
+    <title>MSBTest (Testframework for MSBuild)</title>
     <authors>Daniel Sack</authors>
     <owners>Daniel Sack</owners>
     <!--<licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
@@ -11,8 +11,8 @@
     <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Simple Test Framework for MSBuild Scripts</description>
-    <releaseNotes>Initial version</releaseNotes>
-    <copyright>Copyright 2013</copyright>
+    <releaseNotes>Preview</releaseNotes>
+    <copyright>Copyright 2013-2014</copyright>
     <tags>MSBuild Test MSBTest</tags>
     <dependencies>
       <dependency id="MSBuild.MSBBuildConvention" />

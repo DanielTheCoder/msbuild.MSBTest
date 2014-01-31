@@ -7,8 +7,8 @@
     <ProjectGuid>{55DBF5FA-4338-41D5-A965-026EE3348E1C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Framework.Nuget</RootNamespace>
-    <AssemblyName>Framework.Nuget</AssemblyName>
+    <RootNamespace>Framework.NugetPackages</RootNamespace>
+    <AssemblyName>Framework.NugetPackages</AssemblyName>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <ItemGroup>
@@ -30,9 +30,9 @@
     <Folder Include="Framework\content\Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Framework.samples\content\MSBTest.readme.samples.txt" />
+    <Content Include="Framework.samples\content\readme\MSBTest.readme.samples.txt" />
     <Content Include="Framework\content\readme\MSBTest.readme.txt" />
   </ItemGroup>
   <Import Project="..\packages\MSBuild.MSBBuildConvention.2.0.0\build\MSBuild.MSBBuildConvention.targets" Condition="Exists('..\packages\MSBuild.MSBBuildConvention.2.0.0\build\MSBuild.MSBBuildConvention.targets')" />
-  <Import Project="..\packages\MSBuild.MSBNuget.1.1.2-pre01\build\MSBuild.MSBNuget.targets" Condition="Exists('..\packages\MSBuild.MSBNuget.1.1.2-pre01\build\MSBuild.MSBNuget.targets')" />
+  <Import Project="..\packages\MSBuild.MSBNuget.1.1.2-pre02\build\MSBuild.MSBNuget.targets" Condition="Exists('..\packages\MSBuild.MSBNuget.1.1.2-pre02\build\MSBuild.MSBNuget.targets')" />
 </Project>
