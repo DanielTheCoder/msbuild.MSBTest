@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{950C12
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Nuget", "Framework.Nuget\Framework.Nuget.csproj", "{55DBF5FA-4338-41D5-A965-026EE3348E1C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Nuget", "Framework.NugetPackages\Framework.NugetPackages.csproj", "{55DBF5FA-4338-41D5-A965-026EE3348E1C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Tests", "Framework.Tests\Framework.Tests.csproj", "{0335F432-3F07-4723-B80C-7B077950E0E8}"
 EndProject
