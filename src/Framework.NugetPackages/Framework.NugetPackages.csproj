@@ -34,5 +34,5 @@
     <Content Include="Framework\content\readme\MSBTest.readme.txt" />
   </ItemGroup>
   <Import Project="..\packages\MSBuild.MSBBuildConvention.2.0.0\build\MSBuild.MSBBuildConvention.targets" Condition="Exists('..\packages\MSBuild.MSBBuildConvention.2.0.0\build\MSBuild.MSBBuildConvention.targets')" />
-  <Import Project="..\packages\MSBuild.MSBNuget.1.1.1-pre1\build\MSBuild.MSBNuget.targets" Condition="Exists('..\packages\MSBuild.MSBNuget.1.1.1-pre1\build\MSBuild.MSBNuget.targets')" />
+  <Import Project="..\packages\MSBuild.MSBNuget.1.1.2-pre01\build\MSBuild.MSBNuget.targets" Condition="Exists('..\packages\MSBuild.MSBNuget.1.1.2-pre01\build\MSBuild.MSBNuget.targets')" />
 </Project>
