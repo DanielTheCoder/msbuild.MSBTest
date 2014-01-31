@@ -2,13 +2,17 @@
 
   <PropertyGroup Condition="'$(TestrunnerImport)'==''">
     <!-- nuget path -->
-    <TestrunnerImport Condition="!Exists('$(TestrunnerImport)')">$(MSBuildThisFileDirectory)..\tools\testFramework\testrunner.targets</TestrunnerImport>
+    <TestrunnerImport Condition="!Exists('$(TestrunnerImport)')">$(MSBuildThisFileDirectory)testFramework\testrunner.targets</TestrunnerImport>
     <!-- development path -->
     <TestrunnerImport Condition="!Exists('$(TestrunnerImport)')">$(MSBuildThisFileDirectory)..\testFramework\testrunner.targets</TestrunnerImport>
   </PropertyGroup>
 
   <Import Condition="Exists('$(TestrunnerImport)')" Project="$(TestrunnerImport)" />
-  
+
+  <!-- Import custom global build.props from C# Properties folder-->
+  <Import Project="$(MSBuildProjectDirectory)\Properties\MSBTest.props" Condition="Exists('$(MSBuildProjectDirectory)\Properties\MSBTest.props')=='true'" />
+
+
   <PropertyGroup>
     <BuildTargets>
       CleanTests;
