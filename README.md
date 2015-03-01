@@ -1,6 +1,8 @@
 MSBuild.MSBTest
 ===============
 
+[![Build status](https://ci.appveyor.com/api/projects/status/p2gcv1upqqmwah4v?svg=true)](https://ci.appveyor.com/project/DanielTheCoder/msbuild-msbtest)
+
 MSBTest is a simple testing framework for testing MSBuild scripts
 
 
